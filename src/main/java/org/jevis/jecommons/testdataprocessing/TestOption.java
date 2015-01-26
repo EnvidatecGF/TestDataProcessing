@@ -376,7 +376,10 @@ public class TestOption {
                 in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min3"), "min3", "JEVis2");
                 in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min3"), "min3", "Result");
                 if (in_param1 != null && in_param2 != null && in_value != null) {
-                    calc.testValueMinimum_JEVisAttribute_JEVisAttribute(in_param1, in_param2, in_value.get(0));
+                    List<List<JEVisSample>> attributes=new ArrayList<List<JEVisSample>>();
+                    attributes.add(in_param1.getAllSamples());
+                    attributes.add(in_param2.getAllSamples());
+                    calc.testValueMinimum_JEVisAttribute_JEVisAttribute(attributes, in_value.get(0));
                 } else {
                     System.out.println("The Input parameter or the expected result can't be found in XML file,please check the value of the attribute \"name\"");
                 }
@@ -387,7 +390,10 @@ public class TestOption {
                 in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min4"), "min4", "Param");
                 in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("min4"), "min4", "Result");
                 if (in_param1 != null) {
-                    calc.testValueMinimum_3args(in_param1, in_param2, in_value.get(0), in_resultv.get(0));
+                    List<List<JEVisSample>> attributes=new ArrayList<List<JEVisSample>>();
+                    attributes.add(in_param1.getAllSamples());
+                    attributes.add(in_param2.getAllSamples());
+                    calc.testValueMinimum_3args(attributes, in_value.get(0), in_resultv.get(0));
                 } else {
                     System.out.println("The Input parameter or the expected result can't be found in XML file,please check the value of the attribute \"name\"");
                 }

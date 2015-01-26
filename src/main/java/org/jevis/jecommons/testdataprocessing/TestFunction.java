@@ -346,27 +346,27 @@ public class TestFunction {
         comp.compareValue(exp, Math.min(v1, v2));
     }
     
-    public void testValueMinimum_JEVisAttribute_JEVisAttribute(JEVisAttribute attribute1,JEVisAttribute attribute2,double exp) throws Exception {
+    public void testValueMinimum_JEVisAttribute_JEVisAttribute(List<List<JEVisSample>> attributes,double exp) throws Exception {
         System.out.println("valueMinimum3");
         
         DataCalc calc = new DataCalcSQL();
-        List<List<JEVisSample>> myAtts=new ArrayList<List<JEVisSample>>();
-        myAtts.add(attribute1.getAllSamples());
-        myAtts.add(attribute2.getAllSamples());
-        double result = calc.valueMinimumMore(myAtts);
+//        List<List<JEVisSample>> myAtts=new ArrayList<List<JEVisSample>>();
+//        myAtts.add(attribute1.getAllSamples());
+//        myAtts.add(attribute2.getAllSamples());
+        double result = calc.valueMinimumMore(attributes);
         System.out.println("valueMinimum3 Result:");
         System.out.println(result);
         comp.compareValue(exp, result);
     }
 
-    public void testValueMinimum_3args(JEVisAttribute attribute1,JEVisAttribute attribute2,double value,double exp) throws Exception {
+    public void testValueMinimum_3args(List<List<JEVisSample>> attributes,double value,double exp) throws Exception {
         System.out.println("valueMinimum4");
         
         DataCalc calc = new DataCalcSQL();
-        List<List<JEVisSample>> myAtts=new ArrayList<List<JEVisSample>>();
-        myAtts.add(attribute1.getAllSamples());
-        myAtts.add(attribute2.getAllSamples());
-        double result = calc.valueMinimumMore(myAtts, value);
+//        List<List<JEVisSample>> myAtts=new ArrayList<List<JEVisSample>>();
+//        myAtts.add(attribute1.getAllSamples());
+//        myAtts.add(attribute2.getAllSamples());
+        double result = calc.valueMinimumMore(attributes, value);
         System.out.println("valueMinimum4 Result:");
         System.out.println(result);
         comp.compareValue(exp, result);
