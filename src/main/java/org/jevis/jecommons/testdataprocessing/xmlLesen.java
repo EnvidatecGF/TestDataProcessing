@@ -132,7 +132,7 @@ public class xmlLesen {
                 System.out.println(elem.getText());
 
             }
-            JEVisDataSource ds = new JEVisDataSourceSQL(key_to_database.get(0), key_to_database.get(1), key_to_database.get(2), key_to_database.get(3), key_to_database.get(4),null,null);
+            JEVisDataSource ds = new JEVisDataSourceSQL(key_to_database.get(0), key_to_database.get(1), key_to_database.get(2), key_to_database.get(3), key_to_database.get(4));
 
             ds.connect(key_to_database.get(5), key_to_database.get(6));
             id = Long.parseLong(key_to_database.get(key_to_database.size() - 1));

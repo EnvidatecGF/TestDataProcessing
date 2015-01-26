@@ -4,6 +4,8 @@
  */
 package org.jevis.jecommons.testdataprocessing;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.measure.unit.Unit;
 import org.jevis.api.JEVisAttribute;
 import org.jevis.api.JEVisDataSource;
@@ -90,7 +92,9 @@ public class JEVisSampleTest implements JEVisSample{
     }
 
     public JEVisAttribute getAttribute() throws JEVisException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<JEVisSample> samples=new ArrayList<JEVisSample>();
+        JEVisAttribute att = new JEVisAttributeTest(samples);
+        return att;
     }
 
     public String getNote() throws JEVisException {

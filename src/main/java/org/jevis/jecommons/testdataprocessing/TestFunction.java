@@ -55,22 +55,19 @@ public class TestFunction {
         
         System.out.println("Addition2 Result:");
         App.output(((DataCalcSQL)calc).addition(attribute1.getAllSamples(), attribute2.getAllSamples()));
-        comp.compareJEVis(exp, ((DataCalcSQL)calc).addition(attribute2.getAllSamples(), attribute2.getAllSamples()));
+        comp.compareJEVis(exp, ((DataCalcSQL)calc).addition(attribute1.getAllSamples(), attribute2.getAllSamples()));
     }
     
     public void testAddition(List<List<JEVisSample>> attributes,JEVisAttribute exp) throws Exception {
         System.out.println("addition3");
         
-//        for (JEVisSample sample : samples1.getAllSamples()) {
-//            System.out.println(sample.getTimestamp() + ";" + sample.getValue());
-//        }
-//        
-//        System.out.println("******************");
-//        
-//        for (JEVisSample sample : samples2.getAllSamples()) {
-//            System.out.println(sample.getTimestamp() + ";" + sample.getValue());
-//        }
-        
+        for (int i = 0; i <= attributes.size() - 1; i++) {
+            System.out.println("******************data row" + (i+1));
+            for (JEVisSample sample : attributes.get(i)) {
+                System.out.println(sample.getTimestamp() + ";" + sample.getValue());
+            }
+        }
+    
         DataCalc calc = new DataCalcSQL();
         
         System.out.println("Addition3 Result:");
@@ -183,8 +180,8 @@ public class TestFunction {
         }
         DataCalc calc = new DataCalcSQL();
         System.out.println("linearInterpolation2 Result:");
-        App.output(calc.linearInterpolation(attribute1.getSamples(from, to),insert_num));
-        comp.compareJEVis(exp, calc.linearInterpolation(attribute1.getSamples(from, to),insert_num));
+        App.output(((DataCalcSQL)calc).linearInterpolation(attribute1,from, to,insert_num));
+        comp.compareJEVis(exp, ((DataCalcSQL)calc).linearInterpolation(attribute1,from, to,insert_num));
         
     }
 
@@ -309,8 +306,8 @@ public class TestFunction {
         DataCalc calc = new DataCalcSQL();
         
         System.out.println("subtraction2 Result:");
-        App.output(calc.subtraction(attribute1.getAllSamples(), attribute2.addSamples(null)));
-        comp.compareJEVis(exp, calc.subtraction(attribute1.getAllSamples(), attribute2.addSamples(null)));
+        App.output(calc.subtraction(attribute1.getAllSamples(), attribute2.getAllSamples()));
+        comp.compareJEVis(exp, calc.subtraction(attribute1.getAllSamples(), attribute2.getAllSamples()));
         
     }
 
@@ -328,7 +325,9 @@ public class TestFunction {
     
     public void testValueMinimum_JEVisAttribute(JEVisAttribute attribute1,double exp) throws Exception {
         System.out.println("valueMinimum1");
-        
+        for (JEVisSample sample : attribute1.getAllSamples()) {
+            System.out.println(sample.getTimestamp() + ";" + sample.getValue());
+        }
         DataCalc calc = new DataCalcSQL();
         
         double result = calc.valueMinimum(attribute1.getAllSamples());
@@ -339,6 +338,8 @@ public class TestFunction {
     
     public void testValueMinimum_double_double(double v1,double v2,double exp) throws Exception {
         System.out.println("valueMinimum2");
+        System.out.println(v1+"\n"+v2);
+        
         DataCalc calc = new DataCalcSQL();
         System.out.println("valueMinimum2 Result:");
         System.out.println(Math.min(v1, v2));
@@ -533,7 +534,7 @@ public class TestFunction {
     }
     
     public void testDerivation_JEVisAttribute_Int(JEVisAttribute samples1,int period_s,JEVisAttribute exp) throws JEVisException, ParseException {
-        System.out.println("Deviation1");
+        System.out.println("Deviation");
         
         for (JEVisSample sample : samples1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
@@ -543,7 +544,7 @@ public class TestFunction {
        
         DataCalc calc = new DataCalcSQL();
 
-        System.out.println("Deviation1 Result:");
+        System.out.println("Deviation Result:");
         for (JEVisSample result : calc.derivation(samples1,period_s)) {
             System.out.println(result.getTimestamp() + ";" + result.getValue());
         }

@@ -397,7 +397,7 @@ public class TestOption {
                 in_time=(List<DateTime>)xml.paserXML(cl.getOptionValue("findgap"), "FindGap","Param2");
                 in_value = (List<Double>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "Param1");
                 result_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "Result");
-                if (in_param1 != null) {
+                if (in_param1 != null && in_time != null && in_value != null) {
                     double v1 = in_value.get(0);
                     double v2 = in_value.get(1);
                     calc.testFindGap(in_param1,in_time.get(0) ,(int) v1, (int) v2, result_time);
