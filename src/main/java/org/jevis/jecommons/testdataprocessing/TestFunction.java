@@ -21,7 +21,7 @@ import org.joda.time.DateTime;
  */
 public class TestFunction {
     TestCompare comp=new TestCompare();
-    public void testAddition_JEVisAttribute_double(JEVisAttribute attribute,Double value,JEVisAttribute exp) throws Exception {
+    public void testAddition(JEVisAttribute attribute,Double value,JEVisAttribute exp) throws Exception {
         System.out.println("Addition1");
 
         for (JEVisSample sample : attribute.getAllSamples()) {
@@ -38,7 +38,7 @@ public class TestFunction {
         comp.compareJEVis(exp, calc.addition(attribute.getAllSamples(), value));
     }
     
-    public void testAddition_JEVisAttribute_JEVisAttribute(JEVisAttribute attribute1,JEVisAttribute attribute2,JEVisAttribute exp) throws Exception {
+    public void testAddition(JEVisAttribute attribute1,JEVisAttribute attribute2,JEVisAttribute exp) throws Exception {
         System.out.println("addition2");
         
         for (JEVisSample sample : attribute1.getAllSamples()) {
@@ -98,7 +98,7 @@ public class TestFunction {
         comp.compareJEVis(exp, calc.cumulativeDifferentialConverter(attribute1.getAllSamples()));
     }
 
-    public void testHighPassFilter_JEVisAttribute_double(JEVisAttribute attribute1,double boundary,JEVisAttribute exp) throws Exception {
+    public void testHighPassFilter(JEVisAttribute attribute1,double boundary,JEVisAttribute exp) throws Exception {
         System.out.println("highPassFilter1");
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
@@ -110,7 +110,7 @@ public class TestFunction {
         
     }
 
-    public void testHighPassFilter_3args(JEVisAttribute attribute1,double boundary,double fill_value,JEVisAttribute exp) throws Exception {
+    public void testHighPassFilter(JEVisAttribute attribute1,double boundary,double fill_value,JEVisAttribute exp) throws Exception {
         System.out.println("highPassFilter2");
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
@@ -276,7 +276,7 @@ public class TestFunction {
         comp.compareJEVis(exp, calc.splitValues(attribute1.getAllSamples(),period_s,seg_num));
     }
 
-    public void testSubtraction_JEVisAttribute_double(JEVisAttribute attribute1,Double value,JEVisAttribute exp) throws Exception {
+    public void testSubtraction(JEVisAttribute attribute1,Double value,JEVisAttribute exp) throws Exception {
         System.out.println("subtraction1");
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
@@ -291,7 +291,7 @@ public class TestFunction {
         comp.compareJEVis(exp, calc.subtraction(attribute1.getAllSamples(), value));
     }
 
-    public void testSubtraction_JEVisAttribute_JEVisAttribute(JEVisAttribute attribute1,JEVisAttribute attribute2,JEVisAttribute exp) throws Exception {
+    public void testSubtraction(JEVisAttribute attribute1,JEVisAttribute attribute2,JEVisAttribute exp) throws Exception {
         System.out.println("subtraction2");
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
@@ -323,7 +323,7 @@ public class TestFunction {
         
     }
     
-    public void testValueMinimum_JEVisAttribute(JEVisAttribute attribute1,double exp) throws Exception {
+    public void testValueMinimum(JEVisAttribute attribute1,double exp) throws Exception {
         System.out.println("valueMinimum1");
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
@@ -336,7 +336,7 @@ public class TestFunction {
         comp.compareValue(exp, result);
     }
     
-    public void testValueMinimum_double_double(double v1,double v2,double exp) throws Exception {
+    public void testValueMinimum(double v1,double v2,double exp) throws Exception {
         System.out.println("valueMinimum2");
         System.out.println(v1+"\n"+v2);
         
@@ -346,7 +346,7 @@ public class TestFunction {
         comp.compareValue(exp, Math.min(v1, v2));
     }
     
-    public void testValueMinimum_JEVisAttribute_JEVisAttribute(List<List<JEVisSample>> attributes,double exp) throws Exception {
+    public void testValueMinimum(List<List<JEVisSample>> attributes,double exp) throws Exception {
         System.out.println("valueMinimum3");
         
         DataCalc calc = new DataCalcSQL();
@@ -359,7 +359,7 @@ public class TestFunction {
         comp.compareValue(exp, result);
     }
 
-    public void testValueMinimum_3args(List<List<JEVisSample>> attributes,double value,double exp) throws Exception {
+    public void testValueMinimum(List<List<JEVisSample>> attributes,double value,double exp) throws Exception {
         System.out.println("valueMinimum4");
         
         DataCalc calc = new DataCalcSQL();
@@ -534,7 +534,7 @@ public class TestFunction {
     }
     
     public void testDerivation_JEVisAttribute_Int(JEVisAttribute samples1,int period_s,JEVisAttribute exp) throws JEVisException, ParseException {
-        System.out.println("Deviation");
+        System.out.println("Derivation");
         
         for (JEVisSample sample : samples1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
@@ -544,7 +544,7 @@ public class TestFunction {
        
         DataCalc calc = new DataCalcSQL();
 
-        System.out.println("Deviation Result:");
+        System.out.println("Derivation Result:");
         for (JEVisSample result : calc.derivation(samples1,period_s)) {
             System.out.println(result.getTimestamp() + ";" + result.getValue());
         }
