@@ -408,11 +408,11 @@ public class TestFunction {
         DataCalc calc = new DataCalcSQL();
 
         System.out.println("Multiplication Result:");
-        for (JEVisSample result : calc.multiplication(samples1,samples2)) {
+        for (JEVisSample result : calc.multiplication(samples1.getAllSamples(),samples2.getAllSamples())) {
             System.out.println(result.getTimestamp() + ";" + result.getValue());
         }
         
-        comp.compareJEVis(exp, calc.multiplication(samples1,samples2));
+        comp.compareJEVis(exp, calc.multiplication(samples1.getAllSamples(),samples2.getAllSamples()));
     }
     
     public void testDivision(JEVisAttribute samples1,JEVisAttribute samples2,JEVisAttribute exp) throws JEVisException, ParseException {
@@ -431,11 +431,11 @@ public class TestFunction {
         DataCalc calc = new DataCalcSQL();
 
         System.out.println("Division Result:");
-        for (JEVisSample result : calc.division(samples1,samples2)) {
+        for (JEVisSample result : calc.division(samples1.getAllSamples(),samples2.getAllSamples())) {
             System.out.println(result.getTimestamp() + ";" + result.getValue());
         }
         
-        comp.compareJEVis(exp, calc.division(samples1,samples2));
+        comp.compareJEVis(exp, calc.division(samples1.getAllSamples(),samples2.getAllSamples()));
     }
     
     public void testAverageValue(JEVisAttribute samples1,double exp) throws JEVisException, ParseException {
@@ -450,9 +450,9 @@ public class TestFunction {
 
         System.out.println("AverageValue:");
         
-        System.out.println(calc.getAverageValue(samples1));
+        System.out.println(calc.getAverageValue(samples1.getAllSamples()));
         
-        comp.compareValue(exp, calc.getAverageValue(samples1));
+        comp.compareValue(exp, calc.getAverageValue(samples1.getAllSamples()));
     }
     
     public void testMaxValue(JEVisAttribute samples1,double exp) throws JEVisException, ParseException {
@@ -467,9 +467,9 @@ public class TestFunction {
 
         System.out.println("MaxValue Result:");
         
-        System.out.println(calc.getMaxValue(samples1));
+        System.out.println(calc.getMaxValue(samples1.getAllSamples()));
         
-        comp.compareValue(exp, calc.getMaxValue(samples1));
+        comp.compareValue(exp, calc.getMaxValue(samples1.getAllSamples()));
     }
     
     public void testMeanDeviation(JEVisAttribute samples1,double exp) throws JEVisException, ParseException {
@@ -484,9 +484,9 @@ public class TestFunction {
 
         System.out.println("MeanDeviation Result:");
         
-        System.out.println(calc.meanDeviation(samples1));
+        System.out.println(calc.meanDeviation(samples1.getAllSamples()));
         
-        comp.compareValue(exp, calc.meanDeviation(samples1));
+        comp.compareValue(exp, calc.meanDeviation(samples1.getAllSamples()));
     }
     
     public void testShiftTime(JEVisAttribute samples1,int shiftTime,JEVisAttribute exp) throws JEVisException, ParseException {
@@ -504,11 +504,11 @@ public class TestFunction {
         DataCalc calc = new DataCalcSQL();
 
         System.out.println("ShiftTime Result:");
-        for (JEVisSample result : calc.addShiftTime(samples1, shiftTime)) {
+        for (JEVisSample result : calc.addShiftTime(samples1.getAllSamples(), shiftTime)) {
             System.out.println(result.getTimestamp() + ";" + result.getValue());
         }
         
-        comp.compareJEVis(exp, calc.addShiftTime(samples1, shiftTime));
+        comp.compareJEVis(exp, calc.addShiftTime(samples1.getAllSamples(), shiftTime));
     }
     
     public void testLowPassFilter(JEVisAttribute samples1,double lowerlimit,JEVisAttribute exp) throws JEVisException, ParseException {
@@ -526,15 +526,15 @@ public class TestFunction {
         DataCalc calc = new DataCalcSQL();
 
         System.out.println("LowPassFilter Result:");
-        for (JEVisSample result : calc.lowPassFilter(samples1, lowerlimit)) {
+        for (JEVisSample result : calc.lowPassFilter(samples1.getAllSamples(), lowerlimit)) {
             System.out.println(result.getTimestamp() + ";" + result.getValue());
         }
         
-        comp.compareJEVis(exp, calc.lowPassFilter(samples1, lowerlimit));
+        comp.compareJEVis(exp, calc.lowPassFilter(samples1.getAllSamples(), lowerlimit));
     }
     
     public void testDerivation_JEVisAttribute_Int(JEVisAttribute samples1,int period_s,JEVisAttribute exp) throws JEVisException, ParseException {
-        System.out.println("Derivation");
+        System.out.println("Deviation1");
         
         for (JEVisSample sample : samples1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
@@ -544,12 +544,12 @@ public class TestFunction {
        
         DataCalc calc = new DataCalcSQL();
 
-        System.out.println("Derivation Result:");
-        for (JEVisSample result : calc.derivation(samples1,period_s)) {
+        System.out.println("Deviation1 Result:");
+        for (JEVisSample result : calc.derivation(samples1.getAllSamples(),period_s)) {
             System.out.println(result.getTimestamp() + ";" + result.getValue());
         }
         
-        comp.compareJEVis(exp, calc.derivation(samples1,period_s));
+        comp.compareJEVis(exp, calc.derivation(samples1.getAllSamples(),period_s));
     }
     
     public void testDifferentialCumulativeConverter(JEVisAttribute samples1,JEVisAttribute exp) throws JEVisException, ParseException {
@@ -563,10 +563,10 @@ public class TestFunction {
         DataCalc calc = new DataCalcSQL();
 
         System.out.println("DCConverter Result:");
-        for (JEVisSample result : calc.differentialCumulativeConverter(samples1)) {
+        for (JEVisSample result : calc.differentialCumulativeConverter(samples1.getAllSamples())) {
             System.out.println(result.getTimestamp() + ";" + result.getValue());
         }
         
-        comp.compareJEVis(exp, calc.differentialCumulativeConverter(samples1));
+        comp.compareJEVis(exp, calc.differentialCumulativeConverter(samples1.getAllSamples()));
     }
 }

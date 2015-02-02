@@ -67,32 +67,32 @@ public class TestOption {
         opts.addOption("derivation", true, "calculate the slope between every two values of the data row");
 
 
-        opts.addOption("Help", false, "To test Max Function");
-        opts.addOption("0", false, "Format of Online Function");
-        opts.addOption("1", false, "Format of Local Function");
-        opts.addOption("2", false, "Online Multiplication Test");
-        opts.addOption("3", false, "Local Multiplication Test");
-        opts.addOption("4", true, "Online Division Test");
-        opts.addOption("5", true, "Local Division Test");
-        opts.addOption("6", true, "Online Max Value Test");
-        opts.addOption("7", false, "Local Max Value Test");
-        opts.addOption("8", false, "Online Mean-Deviation Test");
-        opts.addOption("9", false, "Local Mean-Deviation Test");
-        opts.addOption("10", false, "Online Average Value Test");
-        opts.addOption("11", false, "Local Average Value Test");
-        opts.addOption("12", false, "Online Shift-Time Test");
-        opts.addOption("13", false, "Local Shift-Time Test");
-        opts.addOption("14", false, "Online Low-Pass-Filter Test");
-        opts.addOption("15", false, "Local Low-Pass-Filter Test");
-        opts.addOption("16", false, "Online Derivation Test");
-        opts.addOption("17", false, "Local Derivation Test");
-        opts.addOption("18", false, "Online Split Value Test");
-        opts.addOption("19", false, "Local Split Value Test");
-        opts.addOption("20", false, "Online Interpolation Test");
-        opts.addOption("21", false, "Local Interpolation Test");
-        opts.addOption("22", false, "ID of Online Functions");
-        opts.addOption("Multiplication2Test", false, "To test Multiplication2 Function");
-        opts.addOption("Multiplication1TestWithID", false, "To test Multiplication Function");
+//        opts.addOption("Help", false, "To test Max Function");
+//        opts.addOption("0", false, "Format of Online Function");
+//        opts.addOption("1", false, "Format of Local Function");
+//        opts.addOption("2", false, "Online Multiplication Test");
+//        opts.addOption("3", false, "Local Multiplication Test");
+//        opts.addOption("4", true, "Online Division Test");
+//        opts.addOption("5", true, "Local Division Test");
+//        opts.addOption("6", true, "Online Max Value Test");
+//        opts.addOption("7", false, "Local Max Value Test");
+//        opts.addOption("8", false, "Online Mean-Deviation Test");
+//        opts.addOption("9", false, "Local Mean-Deviation Test");
+//        opts.addOption("10", false, "Online Average Value Test");
+//        opts.addOption("11", false, "Local Average Value Test");
+//        opts.addOption("12", false, "Online Shift-Time Test");
+//        opts.addOption("13", false, "Local Shift-Time Test");
+//        opts.addOption("14", false, "Online Low-Pass-Filter Test");
+//        opts.addOption("15", false, "Local Low-Pass-Filter Test");
+//        opts.addOption("16", false, "Online Derivation Test");
+//        opts.addOption("17", false, "Local Derivation Test");
+//        opts.addOption("18", false, "Online Split Value Test");
+//        opts.addOption("19", false, "Local Split Value Test");
+//        opts.addOption("20", false, "Online Interpolation Test");
+//        opts.addOption("21", false, "Local Interpolation Test");
+//        opts.addOption("22", false, "ID of Online Functions");
+//        opts.addOption("Multiplication2Test", false, "To test Multiplication2 Function");
+//        opts.addOption("Multiplication1TestWithID", false, "To test Multiplication Function");
 
 
         
@@ -503,330 +503,330 @@ public class TestOption {
 
 
 
-            if (cl.hasOption("Help")) {
-                System.out.println(" Here are the options that you can input, please choose a number:");
-                System.out.println("  0. Format of Online Function         1. Format of Local Function");
-                System.out.println("  2. Online Multiplication Test        3. Local Multiplication Test                    ");
-                System.out.println("  4. Online Division Test              5. Local Division Test");
-                System.out.println("  6. Online Max Value Test             7. Local Max Value Test");
-                System.out.println("  8. Online Mean-Deviation Test       9. Local Mean-Deviation Test");
-                System.out.println(" 10. Online Average Value Test        11. Local Average Value Test");
-                System.out.println(" 12. Online Shift-Time Test           13. Local Shift-Time Test");
-                System.out.println(" 14. Online Low-Pass-Filter Test      15. Local Low-Pass-Filter Test");
-                System.out.println(" 16. Online Derivation Test           17. Local Derivation Test");
-                System.out.println(" 18. Online Split Value Test          19. Local Split Value Test ");
-                System.out.println(" 20. Online Interpolation Test        21. Local Interpolation Test");
-                System.out.println(" 22. ID of Online Functions                                        ");
-            }
-            if (cl.hasOption("0")) {
-                System.out.println(" Online Multiplication Test  ---->  Two data row multiplied by each other. ");
-                System.out.println("                     Format  ---->  Datarow1's ID  Datarow2's ID  Expected-result's ID");
-                System.out.println();
-                System.out.println(" Online MaxValue Test        ---->  Find the maximum value of the data row. ");
-                System.out.println("                     Format  ---->  Datarow's ID  Expected-result's ID");
-                System.out.println();
-                System.out.println(" Online Mean Deviation Test  ---->  Calculate mean deviation of the data row     ");
-                System.out.println("                     Format  ---->  Datarow's ID  Expected-result's ID");
-                System.out.println();
-                System.out.println(" Online Average Value Test   ---->  Calculate average value of the data row    ");
-                System.out.println("                     Format  ---->  Datarow's ID  Expected-result's ID");
-                System.out.println();
-                System.out.println(" Online Shift-Time Test      ---->  Shift the time axis ");
-                System.out.println("                     Format  ---->  Datarow's ID  Shift-time(seconds)  Expected-result's ID");
-                System.out.println();
-                System.out.println(" Online Low-Pass-Filter Test ---->  Filter the data row with a certain value    ");
-                System.out.println("                     Format  ---->  Datarow's ID  Filter-value  Expected-result's ID");
-                System.out.println();
-                System.out.println(" Online Division Test        ---->  One datarow divided by another datarow.    ");
-                System.out.println("                     Format  ---->  Datarow1's ID  Datarow2's ID  Expected-result's ID");
-                System.out.println();
-                System.out.println(" Online Derivation Test      ---->  Calculate the derivation of the datarow    ");
-                System.out.println("                     Format  ---->  Datarow's ID  Expected-result's ID");
-                System.out.println();
-                System.out.println(" Online SplitValues Test     ---->  Split the data row");
-                System.out.println("                     Format  ---->  Datarow's ID  Split-Quantity  Expected-result's ID");
-                System.out.println();
-                // there is a problem?
-                System.out.println(" Online Interpolation Test   ---->  Interpolate certaion quantities of values    ");
-                System.out.println("                     Format  ---->  Datarow's ID  Interpolation-Quantity  Expected-result's ID");
-                System.out.println();
-
-            }
-
-            if (cl.hasOption("1")) {
-                System.out.println(" Local Multiplication Test  ---->  Two data row multiplied by each other. ");
-                System.out.println("                     Format ---->  Datarow1's path  Datarow2's path  Expected-result's path");
-                System.out.println();
-                System.out.println(" Local MaxValue Test        ---->  Find the maximum value of the data row. ");
-                System.out.println("                     Format ---->  Datarow's path  Expected-result's path");
-                System.out.println();
-                System.out.println(" Local Mean Deviation Test  ---->  Calculate mean deviation of the data row     ");
-                System.out.println("                     Format ---->  Datarow's path  Expected-result's path");
-                System.out.println();
-                System.out.println(" Local Average Value Test   ---->  Calculate average value of the data row    ");
-                System.out.println("                     Format ---->  Datarow's path  Expected-result's path");
-                System.out.println();
-                System.out.println(" Local Shift-Time Test      ---->  Shift the time axis ");
-                System.out.println("                     Format ---->  Datarow's path  Shift-time(seconds)  Expected-result's path");
-                System.out.println();
-                System.out.println(" Local Low-Pass-Filter Test ---->  Filter the data row with a certain value    ");
-                System.out.println("                     Format ---->  Datarow's path  Filter-value  Expected-result's path");
-                System.out.println();
-                System.out.println(" Local Division Test        ---->  One datarow divided by another datarow.    ");
-                System.out.println("                     Format ---->  Datarow1's path  Datarow2's ID  Expected-result's path");
-                System.out.println();
-                System.out.println(" Local Derivation Test      ---->  Calculate the derivation of the datarow    ");
-                System.out.println("                     Format ---->  Datarow's path  Expected-result's path");
-                System.out.println();
-                System.out.println(" Local SplitValues Test     ---->  Split the data row");
-                System.out.println("                     Format ---->  Datarow's path  Split-Quantity  Expected-result's path");
-                System.out.println();
-                // there is a problem?
-                System.out.println(" Local Interpolation Test   ---->  Interpolate certaion quantities of values    ");
-                System.out.println("                     Format ---->  Datarow's path  Interpolation-Quantity  Expected-result's path");
-                System.out.println();
-
-            }
-            if (cl.hasOption("22")) {
-
-                System.out.println("Here are the IDs of different functions:               ");
-                System.out.println(" MultiplicationTest   ---->  factor1: 1028, factor2: 1029,expected result: 1095 ");
-                System.out.println(" MaxValue Test         ---->  datarow :994 , expected max value: 15.103               ");
-                System.out.println(" Mean Deviation Test   ---->  datarow :1252, expected result:1253                                        ");
-                System.out.println(" Average Value Test    ---->  datarow :1248, expected average value: -1.1481                                             ");
-                System.out.println(" Shift-Time Test       ---->  datarow :1042, shift time in seconds: 900  expected result:1130         ");
-                System.out.println(" Low-Pass-Filter       ---->  datarow :1123, filter :value: 10  expected result:1124       ");
-                System.out.println(" Division Test         ---->  dividend:1036, divider: 1035,expected result: 1119  ");
-                System.out.println(" Derivation Test       ---->  dividend:1116, expected result: 1117       ");
-                System.out.println(" SplitValues Test      ---->  datarow :978 , split number:2, expected result:1134                   ");
-                System.out.println(" Interpolation Test    ---->  datarow :1047, expected result: 1121                   ");
-
-            }
-
-            if (cl.hasOption("2")) {
-                //Multiplication by ID to test
-                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
-                ds.connect("Sys Admin", "jevis");
-
-                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
-                JEVisObject object2 = ds.getObject(Long.parseLong(command[2]));
-                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
-                JEVisAttribute factor1 = object1.getAttribute("Value");
-                JEVisAttribute factor2 = object2.getAttribute("Value");
-                JEVisAttribute expectedResult = expectedObj.getAttribute("Value");
-                TestFunction2 TestMultiplication1 = new TestFunction2();
-                System.out.println("Next we will test our Multiplication Function");
-                TestMultiplication1.multiplicationTestOnline(factor1, factor2, expectedResult);
-            }
-
-
-            // Multiplication by path to test      
-            if (cl.hasOption("3")) {
-
-                TestFunction2 TestMultiplication1 = new TestFunction2();
-                System.out.println("Next we will test our Multiplication Function");
-                TestMultiplication1.multiplicationTestLocal(command[1], command[2], command[3]);
-
-            }
-
-
-
-            //division by ID test
-            if (cl.hasOption("4")) {
-
-                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
-                ds.connect("Sys Admin", "jevis");
-
-                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
-                JEVisObject object2 = ds.getObject(Long.parseLong(command[2]));
-                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
-                JEVisAttribute dividend = object1.getAttribute("Value");
-                JEVisAttribute divider = object2.getAttribute("Value");
-                JEVisAttribute expectedResult = expectedObj.getAttribute("Value");
-                TestFunction2 DivisionTest = new TestFunction2();
-                System.out.println("Next we will test our Division Function");
-                DivisionTest.divisionOnlineDataTest(dividend, divider, expectedResult);
-            }
-
-
-            if (cl.hasOption("5")) {
-                System.out.println("Local division Test Function missed");
-
-            }
-
-
-            //Max value by ID to test 
-            if (cl.hasOption("6")) {
-                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
-                ds.connect("Sys Admin", "jevis");
-                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
-                JEVisAttribute toBeTested = object1.getAttribute("Value");
-
-                TestFunction2 MaxTest = new TestFunction2();
-                System.out.println("Next we will test our MAX-Value Function");
-                MaxTest.getMaxValueTestOnline(toBeTested, Double.parseDouble(command[2]));
-            }
-
-            //Max value by path to test 
-            if (cl.hasOption("7")) {
-                TestFunction2 MaxTest = new TestFunction2();
-                System.out.println("Next we will test our MAX-Value Function");
-                MaxTest.getMaxValueTestLocal(command[1], Double.parseDouble(command[2]));
-            }
-
-            //Mean value by ID to test        
-            if (cl.hasOption("8")) {
-                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
-                ds.connect("Sys Admin", "jevis");
-                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
-                JEVisAttribute toBeTested = object1.getAttribute("Value");
-
-                TestFunction2 MeanTest = new TestFunction2();
-                System.out.println("Next we will test our Mean-Value Function");
-                MeanTest.meanDeviationTestOnline(toBeTested, Double.parseDouble(command[2]));
-            }
-
-            if (cl.hasOption("9")) {
-                System.out.println("Local MeanDeviationTest Function missed");
-
-            }
-
-//Average by ID to test
-            if (cl.hasOption("10")) {
-                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
-                ds.connect("Sys Admin", "jevis");
-                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
-                JEVisAttribute toBeTested = object1.getAttribute("Value");
-                TestFunction2 AverageTest = new TestFunction2();
-                System.out.println("Next we will test our Average-Value Function");
-                AverageTest.getAverageValueTestOnline(toBeTested, Double.parseDouble(command[2]));
-            }
-
-//Average by Path to test
-            if (cl.hasOption("11")) {
-                TestFunction2 AverageTest = new TestFunction2();
-                System.out.println("Next we will test our Average-Value Function");
-                AverageTest.getAverageValueTestLocal(command[1], Double.parseDouble(command[2]));
-            }
-
-
-
-
-//shift time by ID
-            if (cl.hasOption("12")) {
-                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
-                ds.connect("Sys Admin", "jevis");
-                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
-                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
-                JEVisAttribute toBeShifted = object1.getAttribute("Value");
-                JEVisAttribute expectedResult = expectedObj.getAttribute("Value");
-                TestFunction2 ShiftTimeTest = new TestFunction2();
-                System.out.println("Next we will test our ShiftTime Function");
-                ShiftTimeTest.addShiftTimeTestOnline(toBeShifted, Integer.parseInt(command[2]), expectedResult);
-            }
-
-//shift time by Path
-            if (cl.hasOption("13")) {
-                TestFunction2 ShiftTimeTest = new TestFunction2();
-                System.out.println("Next we will test our ShiftTime Function");
-                ShiftTimeTest.addShiftTimeTestLocal(command[1], Integer.parseInt(command[2]), command[3]);
-
-
-            }
-
-
-//low pass filter by ID test
-            if (cl.hasOption("14")) {
-                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
-                ds.connect("Sys Admin", "jevis");
-                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
-                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
-
-                JEVisAttribute toBeTested = object1.getAttribute("Value");
-                JEVisAttribute expectedResult = expectedObj.getAttribute("Value");
-
-                TestFunction2 LowPassFilterTest = new TestFunction2();
-                System.out.println("Next we will test our Low-Pass-Filter");
-                LowPassFilterTest.lowPassFilterTestOnline(toBeTested, Double.parseDouble(command[2]), expectedResult);
-            }
-
-
-            if (cl.hasOption("15")) {
-                System.out.println("Local Low Pass Filter function missed");
-
-            }
-
-
-
-//deriviation by ID to Test        
-            if (cl.hasOption("16")) {
-                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
-                ds.connect("Sys Admin", "jevis");
-
-                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
-
-                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[2]));
-                JEVisAttribute tobeTested = object1.getAttribute("Value");
-                JEVisAttribute expectedResult = expectedObj.getAttribute("Value");
-
-                TestFunction2 DerivationTest = new TestFunction2();
-                System.out.println("Next we will test our Derivation Function");
-                DerivationTest.derivationTestOnline(tobeTested, expectedResult);
-            }
-
-//deriviation by path to Test        
-            if (cl.hasOption("17")) {
-                TestFunction2 DerivationTest = new TestFunction2();
-                System.out.println("Next we will test our Derivation Function");
-                DerivationTest.derivationTestLocal(command[1], command[2]);
-            }
-
-
-//split value by ID to test
-            if (cl.hasOption("18")) {
-                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
-                ds.connect("Sys Admin", "jevis");
-
-                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
-                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
-                JEVisAttribute toBeTested = object1.getAttribute("Value");
-                JEVisAttribute exp = expectedObj.getAttribute("Value");
-                TestFunction2 SplitValuesTest = new TestFunction2();
-                System.out.println("Next we will test our SplitValues Function");
-                SplitValuesTest.splitValuesTestOnline(toBeTested, Integer.parseInt(command[2]), exp);
-            }
-
-            //split value by path to test
-            if (cl.hasOption("19")) {
-                TestFunction2 SplitValuesTest = new TestFunction2();
-                System.out.println("Next we will test our SplitValues Function");
-                SplitValuesTest.splitValuesTestLocal(command[1], Integer.parseInt(command[2]), command[3]);
-            }
-
-
-
-//interpolation by ID to test       
-            if (cl.hasOption("20")) {
-                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
-                ds.connect("Sys Admin", "jevis");
-
-                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
-                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
-                JEVisAttribute toBeTested = object1.getAttribute("Value");
-                JEVisAttribute exp = expectedObj.getAttribute("Value");
-
-                TestFunction2 InterpolationTest = new TestFunction2();
-                System.out.println("Next we will test our Interpolation Function");
-                InterpolationTest.interpLinearTestOnline(toBeTested, Integer.parseInt(command[2]), exp);
-            }
-
-
-
-            if (cl.hasOption("21")) {
-                TestFunction2 InterpolationTest = new TestFunction2();
-                System.out.println("Next we will test our Interpolation Function");
-                InterpolationTest.interpLinearTestLocal(command[1], Integer.parseInt(command[2]), command[3]);
-            }
+//            if (cl.hasOption("Help")) {
+//                System.out.println(" Here are the options that you can input, please choose a number:");
+//                System.out.println("  0. Format of Online Function         1. Format of Local Function");
+//                System.out.println("  2. Online Multiplication Test        3. Local Multiplication Test                    ");
+//                System.out.println("  4. Online Division Test              5. Local Division Test");
+//                System.out.println("  6. Online Max Value Test             7. Local Max Value Test");
+//                System.out.println("  8. Online Mean-Deviation Test       9. Local Mean-Deviation Test");
+//                System.out.println(" 10. Online Average Value Test        11. Local Average Value Test");
+//                System.out.println(" 12. Online Shift-Time Test           13. Local Shift-Time Test");
+//                System.out.println(" 14. Online Low-Pass-Filter Test      15. Local Low-Pass-Filter Test");
+//                System.out.println(" 16. Online Derivation Test           17. Local Derivation Test");
+//                System.out.println(" 18. Online Split Value Test          19. Local Split Value Test ");
+//                System.out.println(" 20. Online Interpolation Test        21. Local Interpolation Test");
+//                System.out.println(" 22. ID of Online Functions                                        ");
+//            }
+//            if (cl.hasOption("0")) {
+//                System.out.println(" Online Multiplication Test  ---->  Two data row multiplied by each other. ");
+//                System.out.println("                     Format  ---->  Datarow1's ID  Datarow2's ID  Expected-result's ID");
+//                System.out.println();
+//                System.out.println(" Online MaxValue Test        ---->  Find the maximum value of the data row. ");
+//                System.out.println("                     Format  ---->  Datarow's ID  Expected-result's ID");
+//                System.out.println();
+//                System.out.println(" Online Mean Deviation Test  ---->  Calculate mean deviation of the data row     ");
+//                System.out.println("                     Format  ---->  Datarow's ID  Expected-result's ID");
+//                System.out.println();
+//                System.out.println(" Online Average Value Test   ---->  Calculate average value of the data row    ");
+//                System.out.println("                     Format  ---->  Datarow's ID  Expected-result's ID");
+//                System.out.println();
+//                System.out.println(" Online Shift-Time Test      ---->  Shift the time axis ");
+//                System.out.println("                     Format  ---->  Datarow's ID  Shift-time(seconds)  Expected-result's ID");
+//                System.out.println();
+//                System.out.println(" Online Low-Pass-Filter Test ---->  Filter the data row with a certain value    ");
+//                System.out.println("                     Format  ---->  Datarow's ID  Filter-value  Expected-result's ID");
+//                System.out.println();
+//                System.out.println(" Online Division Test        ---->  One datarow divided by another datarow.    ");
+//                System.out.println("                     Format  ---->  Datarow1's ID  Datarow2's ID  Expected-result's ID");
+//                System.out.println();
+//                System.out.println(" Online Derivation Test      ---->  Calculate the derivation of the datarow    ");
+//                System.out.println("                     Format  ---->  Datarow's ID  Expected-result's ID");
+//                System.out.println();
+//                System.out.println(" Online SplitValues Test     ---->  Split the data row");
+//                System.out.println("                     Format  ---->  Datarow's ID  Split-Quantity  Expected-result's ID");
+//                System.out.println();
+//                // there is a problem?
+//                System.out.println(" Online Interpolation Test   ---->  Interpolate certaion quantities of values    ");
+//                System.out.println("                     Format  ---->  Datarow's ID  Interpolation-Quantity  Expected-result's ID");
+//                System.out.println();
+//
+//            }
+//
+//            if (cl.hasOption("1")) {
+//                System.out.println(" Local Multiplication Test  ---->  Two data row multiplied by each other. ");
+//                System.out.println("                     Format ---->  Datarow1's path  Datarow2's path  Expected-result's path");
+//                System.out.println();
+//                System.out.println(" Local MaxValue Test        ---->  Find the maximum value of the data row. ");
+//                System.out.println("                     Format ---->  Datarow's path  Expected-result's path");
+//                System.out.println();
+//                System.out.println(" Local Mean Deviation Test  ---->  Calculate mean deviation of the data row     ");
+//                System.out.println("                     Format ---->  Datarow's path  Expected-result's path");
+//                System.out.println();
+//                System.out.println(" Local Average Value Test   ---->  Calculate average value of the data row    ");
+//                System.out.println("                     Format ---->  Datarow's path  Expected-result's path");
+//                System.out.println();
+//                System.out.println(" Local Shift-Time Test      ---->  Shift the time axis ");
+//                System.out.println("                     Format ---->  Datarow's path  Shift-time(seconds)  Expected-result's path");
+//                System.out.println();
+//                System.out.println(" Local Low-Pass-Filter Test ---->  Filter the data row with a certain value    ");
+//                System.out.println("                     Format ---->  Datarow's path  Filter-value  Expected-result's path");
+//                System.out.println();
+//                System.out.println(" Local Division Test        ---->  One datarow divided by another datarow.    ");
+//                System.out.println("                     Format ---->  Datarow1's path  Datarow2's ID  Expected-result's path");
+//                System.out.println();
+//                System.out.println(" Local Derivation Test      ---->  Calculate the derivation of the datarow    ");
+//                System.out.println("                     Format ---->  Datarow's path  Expected-result's path");
+//                System.out.println();
+//                System.out.println(" Local SplitValues Test     ---->  Split the data row");
+//                System.out.println("                     Format ---->  Datarow's path  Split-Quantity  Expected-result's path");
+//                System.out.println();
+//                // there is a problem?
+//                System.out.println(" Local Interpolation Test   ---->  Interpolate certaion quantities of values    ");
+//                System.out.println("                     Format ---->  Datarow's path  Interpolation-Quantity  Expected-result's path");
+//                System.out.println();
+//
+//            }
+//            if (cl.hasOption("22")) {
+//
+//                System.out.println("Here are the IDs of different functions:               ");
+//                System.out.println(" MultiplicationTest   ---->  factor1: 1028, factor2: 1029,expected result: 1095 ");
+//                System.out.println(" MaxValue Test         ---->  datarow :994 , expected max value: 15.103               ");
+//                System.out.println(" Mean Deviation Test   ---->  datarow :1252, expected result:1253                                        ");
+//                System.out.println(" Average Value Test    ---->  datarow :1248, expected average value: -1.1481                                             ");
+//                System.out.println(" Shift-Time Test       ---->  datarow :1042, shift time in seconds: 900  expected result:1130         ");
+//                System.out.println(" Low-Pass-Filter       ---->  datarow :1123, filter :value: 10  expected result:1124       ");
+//                System.out.println(" Division Test         ---->  dividend:1036, divider: 1035,expected result: 1119  ");
+//                System.out.println(" Derivation Test       ---->  dividend:1116, expected result: 1117       ");
+//                System.out.println(" SplitValues Test      ---->  datarow :978 , split number:2, expected result:1134                   ");
+//                System.out.println(" Interpolation Test    ---->  datarow :1047, expected result: 1121                   ");
+//
+//            }
+//
+//            if (cl.hasOption("2")) {
+//                //Multiplication by ID to test
+//                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
+//                ds.connect("Sys Admin", "jevis");
+//
+//                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
+//                JEVisObject object2 = ds.getObject(Long.parseLong(command[2]));
+//                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
+//                JEVisAttribute factor1 = object1.getAttribute("Value");
+//                JEVisAttribute factor2 = object2.getAttribute("Value");
+//                JEVisAttribute expectedResult = expectedObj.getAttribute("Value");
+//                TestFunction2 TestMultiplication1 = new TestFunction2();
+//                System.out.println("Next we will test our Multiplication Function");
+//                TestMultiplication1.multiplicationTestOnline(factor1, factor2, expectedResult);
+//            }
+//
+//
+//            // Multiplication by path to test      
+//            if (cl.hasOption("3")) {
+//
+//                TestFunction2 TestMultiplication1 = new TestFunction2();
+//                System.out.println("Next we will test our Multiplication Function");
+//                TestMultiplication1.multiplicationTestLocal(command[1], command[2], command[3]);
+//
+//            }
+//
+//
+//
+//            //division by ID test
+//            if (cl.hasOption("4")) {
+//
+//                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
+//                ds.connect("Sys Admin", "jevis");
+//
+//                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
+//                JEVisObject object2 = ds.getObject(Long.parseLong(command[2]));
+//                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
+//                JEVisAttribute dividend = object1.getAttribute("Value");
+//                JEVisAttribute divider = object2.getAttribute("Value");
+//                JEVisAttribute expectedResult = expectedObj.getAttribute("Value");
+//                TestFunction2 DivisionTest = new TestFunction2();
+//                System.out.println("Next we will test our Division Function");
+//                DivisionTest.divisionOnlineDataTest(dividend, divider, expectedResult);
+//            }
+//
+//
+//            if (cl.hasOption("5")) {
+//                System.out.println("Local division Test Function missed");
+//
+//            }
+//
+//
+//            //Max value by ID to test 
+//            if (cl.hasOption("6")) {
+//                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
+//                ds.connect("Sys Admin", "jevis");
+//                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
+//                JEVisAttribute toBeTested = object1.getAttribute("Value");
+//
+//                TestFunction2 MaxTest = new TestFunction2();
+//                System.out.println("Next we will test our MAX-Value Function");
+//                MaxTest.getMaxValueTestOnline(toBeTested, Double.parseDouble(command[2]));
+//            }
+//
+//            //Max value by path to test 
+//            if (cl.hasOption("7")) {
+//                TestFunction2 MaxTest = new TestFunction2();
+//                System.out.println("Next we will test our MAX-Value Function");
+//                MaxTest.getMaxValueTestLocal(command[1], Double.parseDouble(command[2]));
+//            }
+//
+//            //Mean value by ID to test        
+//            if (cl.hasOption("8")) {
+//                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
+//                ds.connect("Sys Admin", "jevis");
+//                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
+//                JEVisAttribute toBeTested = object1.getAttribute("Value");
+//
+//                TestFunction2 MeanTest = new TestFunction2();
+//                System.out.println("Next we will test our Mean-Value Function");
+//                MeanTest.meanDeviationTestOnline(toBeTested, Double.parseDouble(command[2]));
+//            }
+//
+//            if (cl.hasOption("9")) {
+//                System.out.println("Local MeanDeviationTest Function missed");
+//
+//            }
+//
+////Average by ID to test
+//            if (cl.hasOption("10")) {
+//                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
+//                ds.connect("Sys Admin", "jevis");
+//                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
+//                JEVisAttribute toBeTested = object1.getAttribute("Value");
+//                TestFunction2 AverageTest = new TestFunction2();
+//                System.out.println("Next we will test our Average-Value Function");
+//                AverageTest.getAverageValueTestOnline(toBeTested, Double.parseDouble(command[2]));
+//            }
+//
+////Average by Path to test
+//            if (cl.hasOption("11")) {
+//                TestFunction2 AverageTest = new TestFunction2();
+//                System.out.println("Next we will test our Average-Value Function");
+//                AverageTest.getAverageValueTestLocal(command[1], Double.parseDouble(command[2]));
+//            }
+//
+//
+//
+//
+////shift time by ID
+//            if (cl.hasOption("12")) {
+//                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
+//                ds.connect("Sys Admin", "jevis");
+//                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
+//                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
+//                JEVisAttribute toBeShifted = object1.getAttribute("Value");
+//                JEVisAttribute expectedResult = expectedObj.getAttribute("Value");
+//                TestFunction2 ShiftTimeTest = new TestFunction2();
+//                System.out.println("Next we will test our ShiftTime Function");
+//                ShiftTimeTest.addShiftTimeTestOnline(toBeShifted, Integer.parseInt(command[2]), expectedResult);
+//            }
+//
+////shift time by Path
+//            if (cl.hasOption("13")) {
+//                TestFunction2 ShiftTimeTest = new TestFunction2();
+//                System.out.println("Next we will test our ShiftTime Function");
+//                ShiftTimeTest.addShiftTimeTestLocal(command[1], Integer.parseInt(command[2]), command[3]);
+//
+//
+//            }
+//
+//
+////low pass filter by ID test
+//            if (cl.hasOption("14")) {
+//                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
+//                ds.connect("Sys Admin", "jevis");
+//                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
+//                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
+//
+//                JEVisAttribute toBeTested = object1.getAttribute("Value");
+//                JEVisAttribute expectedResult = expectedObj.getAttribute("Value");
+//
+//                TestFunction2 LowPassFilterTest = new TestFunction2();
+//                System.out.println("Next we will test our Low-Pass-Filter");
+//                LowPassFilterTest.lowPassFilterTestOnline(toBeTested, Double.parseDouble(command[2]), expectedResult);
+//            }
+//
+//
+//            if (cl.hasOption("15")) {
+//                System.out.println("Local Low Pass Filter function missed");
+//
+//            }
+//
+//
+//
+////deriviation by ID to Test        
+//            if (cl.hasOption("16")) {
+//                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
+//                ds.connect("Sys Admin", "jevis");
+//
+//                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
+//
+//                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[2]));
+//                JEVisAttribute tobeTested = object1.getAttribute("Value");
+//                JEVisAttribute expectedResult = expectedObj.getAttribute("Value");
+//
+//                TestFunction2 DerivationTest = new TestFunction2();
+//                System.out.println("Next we will test our Derivation Function");
+//                DerivationTest.derivationTestOnline(tobeTested, expectedResult);
+//            }
+//
+////deriviation by path to Test        
+//            if (cl.hasOption("17")) {
+//                TestFunction2 DerivationTest = new TestFunction2();
+//                System.out.println("Next we will test our Derivation Function");
+//                DerivationTest.derivationTestLocal(command[1], command[2]);
+//            }
+//
+//
+////split value by ID to test
+//            if (cl.hasOption("18")) {
+//                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
+//                ds.connect("Sys Admin", "jevis");
+//
+//                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
+//                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
+//                JEVisAttribute toBeTested = object1.getAttribute("Value");
+//                JEVisAttribute exp = expectedObj.getAttribute("Value");
+//                TestFunction2 SplitValuesTest = new TestFunction2();
+//                System.out.println("Next we will test our SplitValues Function");
+//                SplitValuesTest.splitValuesTestOnline(toBeTested, Integer.parseInt(command[2]), exp);
+//            }
+//
+//            //split value by path to test
+//            if (cl.hasOption("19")) {
+//                TestFunction2 SplitValuesTest = new TestFunction2();
+//                System.out.println("Next we will test our SplitValues Function");
+//                SplitValuesTest.splitValuesTestLocal(command[1], Integer.parseInt(command[2]), command[3]);
+//            }
+//
+//
+//
+////interpolation by ID to test       
+//            if (cl.hasOption("20")) {
+//                JEVisDataSource ds = new JEVisDataSourceSQL("192.168.2.55", "3306", "jevis", "jevis", "jevistest",null,null);
+//                ds.connect("Sys Admin", "jevis");
+//
+//                JEVisObject object1 = ds.getObject(Long.parseLong(command[1]));
+//                JEVisObject expectedObj = ds.getObject(Long.parseLong(command[3]));
+//                JEVisAttribute toBeTested = object1.getAttribute("Value");
+//                JEVisAttribute exp = expectedObj.getAttribute("Value");
+//
+//                TestFunction2 InterpolationTest = new TestFunction2();
+//                System.out.println("Next we will test our Interpolation Function");
+//                InterpolationTest.interpLinearTestOnline(toBeTested, Integer.parseInt(command[2]), exp);
+//            }
+//
+//
+//
+//            if (cl.hasOption("21")) {
+//                TestFunction2 InterpolationTest = new TestFunction2();
+//                System.out.println("Next we will test our Interpolation Function");
+//                InterpolationTest.interpLinearTestLocal(command[1], Integer.parseInt(command[2]), command[3]);
+//            }
         }
     }
 }
