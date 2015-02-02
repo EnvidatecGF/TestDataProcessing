@@ -26,7 +26,7 @@ import org.joda.time.format.DateTimeFormatter;
  */
 public class xmlLesen {
 
-    public Object paserXML(String args,String function, String sample) throws DocumentException {
+    public Object paserXML(String args, String function, String sample) throws DocumentException {
         Object myAtt = null;
         SAXReader reader = new SAXReader();
         try {
@@ -35,8 +35,8 @@ public class xmlLesen {
             List<org.dom4j.Element> param = root.elements();
             for (int j = 0; j < param.size(); j++) {
                 Element node = (Element) param.get(j);
-                myAtt=find(node,function, sample);
-                if(myAtt!=null){
+                myAtt = find(node, function, sample);
+                if (myAtt != null) {
                     return myAtt;
                 }
             }
@@ -46,26 +46,35 @@ public class xmlLesen {
         return myAtt;
     }
 
-    private Object find(Element node,String function, String sample) throws JEVisException {
-        if (node.getName().equals("INPUT") && node.attributeValue("function").equals(function) && node.attributeValue("name").equals(sample)) {
+    private Object find(Element node, String function, String sample) throws JEVisException {
+        
+        if (node.getName().toUpperCase().equals("INPUT") && node.attributeValue("function").toUpperCase().equals(function.toUpperCase()) && node.attributeValue("name").toUpperCase().equals(sample.toUpperCase())) {
             List<org.dom4j.Element> param = node.elements();
             for (int i = 0; i < param.size(); i++) {
-                if(param.get(i).getName().equals("Samples") && param.get(i).attributeValue("typ").equals("JEVis") || param.get(i).attributeValue("typ").equals("ID")){
-                    return typJEVis(param.get(i),param.get(i).attributeValue("typ"));
-                }else if(param.get(i).getName().equals("Samples") && param.get(i).attributeValue("typ").equals("Value")){
+                String paramname=param.get(i).getName().toUpperCase();
+                String attributename=param.get(i).attributeValue("typ").toUpperCase();
+                
+                if (paramname.equals("SAMPLES") && attributename.equals("JEVIS") || attributename.equals("ID")) {
+                    return typJEVis(param.get(i), attributename);
+                } else if (paramname.equals("SAMPLES") && attributename.equals("VALUE")) {
                     return typValue(param.get(i));
-                }else if(param.get(i).getName().equals("Samples") && param.get(i).attributeValue("typ").equals("Time")){
+                } else if (paramname.equals("SAMPLES") && attributename.equals("TIME")) {
                     return typTime(param.get(i));
+                }else if (paramname.equals("SAMPLES") && attributename.equals("TRUEORFALSE")) {
+                    return typTrueOrFalse(param.get(i));
                 }
             }
-        }else if(node.getName().equals("RESULT") && node.attributeValue("function").equals(function) && node.attributeValue("name").equals(sample)){
+        } else if (node.getName().toUpperCase().equals("RESULT") && node.attributeValue("function").toUpperCase().equals(function.toUpperCase()) && node.attributeValue("name").toUpperCase().equals(sample.toUpperCase())) {
             List<org.dom4j.Element> param = node.elements();
             for (int j = 0; j < param.size(); j++) {
-                if(param.get(j).getName().equals("Samples") && param.get(j).attributeValue("typ").equals("JEVis") || param.get(j).attributeValue("typ").equals("ID")){
-                    return typJEVis(param.get(j),param.get(j).attributeValue("typ"));
-                }else if(param.get(j).getName().equals("Samples") && param.get(j).attributeValue("typ").equals("Value")){
+                String paramname=param.get(j).getName().toUpperCase();
+                String attributename=param.get(j).attributeValue("typ").toUpperCase();
+                
+                if (paramname.equals("SAMPLES") && attributename.equals("JEVIS") || attributename.equals("ID")) {
+                    return typJEVis(param.get(j), attributename);
+                } else if (paramname.equals("SAMPLES") && attributename.equals("VALUE")) {
                     return typValue(param.get(j));
-                }else if(param.get(j).getName().equals("Samples") && param.get(j).attributeValue("typ").equals("Time")){
+                } else if (paramname.equals("SAMPLES") && attributename.equals("TIME")) {
                     return typTime(param.get(j));
                 }
             }
@@ -97,7 +106,6 @@ public class xmlLesen {
 //        }
 //        return myAtt;
 //    }
-    
     private JEVisAttribute typJEVis(Element node, String typ) throws JEVisException {
         JEVisAttributeTest myAtt1 = null;
         JEVisAttribute myAtt2 = null;
@@ -109,7 +117,7 @@ public class xmlLesen {
 //                nodeByNodes(param.get(j));
 //            }
 //        } else {
-        if (typ.equals("JEVis")) {
+        if (typ.equals("JEVIS")) {
             for (Object e : node.elements()) {
                 Element elem = (Element) e;
                 double value = Double.parseDouble(elem.attributeValue("value"));
@@ -143,8 +151,8 @@ public class xmlLesen {
 //        }
         return null;
     }
-    
-        private List<Double> typValue(Element node) {
+
+    private List<Double> typValue(Element node) {
         List<Double> list = new ArrayList<Double>();
 
 //        if (!node.getName().equals("Samples")) {
@@ -153,17 +161,17 @@ public class xmlLesen {
 //                nodeByNodes(param.get(j));
 //            }
 //        } else {
-            for (Object e : node.elements()) {
-                Element elem = (Element) e;
-                double value = Double.parseDouble(elem.getText());
-                list.add(value);
-            }
-            
+        for (Object e : node.elements()) {
+            Element elem = (Element) e;
+            double value = Double.parseDouble(elem.getText());
+            list.add(value);
+        }
+
 //        }
         return list;
     }
-        
-        private List<DateTime> typTime(Element node) {
+
+    private List<DateTime> typTime(Element node) {
         List<DateTime> list = new ArrayList<DateTime>();
 
 //        if (!node.getName().equals("Samples")) {
@@ -172,15 +180,25 @@ public class xmlLesen {
 //                nodeByNodes(param.get(j));
 //            }
 //        } else {
-            for (Object e : node.elements()) {
-                Element elem = (Element) e;
-                DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss Z");
-                DateTime time = formatter.parseDateTime(elem.getText());
-                list.add(time);
-            }
-            
+        for (Object e : node.elements()) {
+            Element elem = (Element) e;
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss Z");
+            DateTime time = formatter.parseDateTime(elem.getText());
+            list.add(time);
+        }
+
 //        }
         return list;
     }
-   
+        
+    private List<Boolean> typTrueOrFalse(Element node) {
+        List<Boolean> list = new ArrayList<Boolean>();
+
+        for (Object e : node.elements()) {
+            Element elem = (Element) e;
+            Boolean truefalse = Boolean.parseBoolean(elem.getText());
+            list.add(truefalse);
+        }
+        return list;
+    }
 }

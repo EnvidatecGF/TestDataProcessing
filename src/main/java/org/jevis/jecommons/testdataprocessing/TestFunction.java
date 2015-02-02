@@ -265,15 +265,15 @@ public class TestFunction {
         comp.compareJEVis(exp, calc.sortByValue(attribute1.getAllSamples(), order));
     }
 
-    public void testSplitValues(JEVisAttribute attribute1,int period_s,int seg_num,JEVisAttribute exp) throws Exception {
+    public void testSplitValues(JEVisAttribute attribute1,int period_s,int seg_num,Boolean backward,JEVisAttribute exp) throws Exception {
         System.out.println("splitValues");
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
         DataCalc calc = new DataCalcSQL();
         System.out.println("splitValues Result:");
-        App.output(calc.splitValues(attribute1.getAllSamples(),period_s,seg_num));
-        comp.compareJEVis(exp, calc.splitValues(attribute1.getAllSamples(),period_s,seg_num));
+        App.output(calc.splitValues(attribute1.getAllSamples(),period_s,seg_num,backward));
+        comp.compareJEVis(exp, calc.splitValues(attribute1.getAllSamples(),period_s,seg_num,backward));
     }
 
     public void testSubtraction(JEVisAttribute attribute1,Double value,JEVisAttribute exp) throws Exception {

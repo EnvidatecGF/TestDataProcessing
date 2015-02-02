@@ -315,10 +315,13 @@ public class TestOption {
                 in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "JEVis1");
                 in_value = (List<Double>) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "Param");
                 in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "Result");
-                if (in_param1 != null && in_value != null && in_result != null) {
+                List<Boolean> backward=new ArrayList<Boolean>();
+                backward=(List<Boolean>)xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "TrueOrFalse");
+                
+                if (in_param1 != null && in_value != null && in_result != null && backward != null) {
                     double v1 = in_value.get(0);
                     double v2 = in_value.get(1);
-                    calc.testSplitValues(in_param1, (int) v1, (int) v2, in_result);
+                    calc.testSplitValues(in_param1, (int) v1, (int) v2,backward.get(0), in_result);
                 } else {
                     System.out.println("The Input parameter or the expected result can't be found in XML file,please check the value of the attribute \"name\"");
                 }
