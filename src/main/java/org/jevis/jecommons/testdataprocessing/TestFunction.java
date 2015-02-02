@@ -31,7 +31,7 @@ public class TestFunction {
         System.out.println(value);
         
        DataCalc calc = new DataCalcSQL();
-
+       
         System.out.println("Addition1 Result:");
         App.output(calc.addition(attribute.getAllSamples(), value));
 //        output(exp.getAllSamples());

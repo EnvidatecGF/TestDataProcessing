@@ -14,6 +14,7 @@ import org.jevis.api.JEVisFile;
 import org.jevis.api.JEVisMultiSelection;
 import org.jevis.api.JEVisSample;
 import org.jevis.api.JEVisSelection;
+import org.jevis.api.JEVisUnit;
 import org.joda.time.DateTime;
 
 /**
@@ -105,10 +106,6 @@ public class JEVisSampleTest implements JEVisSample{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Unit getUnit() throws JEVisException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public JEVisDataSource getDataSource() throws JEVisException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -122,6 +119,22 @@ public class JEVisSampleTest implements JEVisSample{
     }
 
     public boolean hasChanged() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Long getValueAsLong(JEVisUnit unit) throws JEVisException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Double getValueAsDouble(JEVisUnit unit) throws JEVisException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setValue(Object value, JEVisUnit unit) throws JEVisException, ClassCastException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public JEVisUnit getUnit() throws JEVisException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
