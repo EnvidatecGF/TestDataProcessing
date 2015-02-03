@@ -75,7 +75,7 @@ public class TestFunction {
         comp.compareJEVis(exp, calc.addition(attributes));
     }
     
-    public void testBoundaryFilter(JEVisAttribute attribute1,double up,double low,JEVisAttribute exp) throws Exception {
+    public void testBoundaryFilter(JEVisAttribute attribute1,double up,double low,Boolean delete,JEVisAttribute exp) throws Exception {
         System.out.println("BoundaryFilter");
         
         for (JEVisSample sample : attribute1.getAllSamples()) {
@@ -83,8 +83,8 @@ public class TestFunction {
         }
         DataCalc calc=new DataCalcSQL();
         System.out.println("BoundaryFilter Result:");
-        App.output(calc.boundaryFilter(attribute1.getAllSamples(), up, low,false));
-        comp.compareJEVis(exp, calc.boundaryFilter(attribute1.getAllSamples(), up, low,false));
+        App.output(calc.boundaryFilter(attribute1.getAllSamples(), up, low,delete));
+        comp.compareJEVis(exp, calc.boundaryFilter(attribute1.getAllSamples(), up, low,delete));
     }
 
     public void testCumulativeDifferentialConverter(JEVisAttribute attribute1,JEVisAttribute exp) throws Exception {
