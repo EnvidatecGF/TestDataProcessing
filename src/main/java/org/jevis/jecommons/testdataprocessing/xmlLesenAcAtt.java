@@ -5,7 +5,9 @@
 package org.jevis.jecommons.testdataprocessing;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -34,7 +36,7 @@ public class xmlLesenAcAtt {
             List<Element> undernode = root.elements();
             for (int j = 0; j < undernode.size(); j++) {
                 Element node = (Element) undernode.get(j);
-                myAtt = find(node, function.toLowerCase(), param.toLowerCase(),type.toLowerCase());
+                myAtt = find(node, function.toLowerCase(), param.toLowerCase());
                 if (myAtt != null) {
                     return myAtt;
                 }
@@ -45,7 +47,7 @@ public class xmlLesenAcAtt {
         return myAtt;
     }
     
-    private Object find(Element node, String function, String param, String type) throws JEVisException {
+    private Object find(Element node, String function, String param) throws JEVisException {
 
 //        if(node.attributeCount()< 3){
 //            if (!node.elements().isEmpty()) {
@@ -57,31 +59,32 @@ public class xmlLesenAcAtt {
 //            }
 //        }
 //        }
-        List<String> attval = new ArrayList<String>();
+        Map<String,String> attval = new HashMap<String,String>();
         for (int i = 0; i < node.attributeCount(); i++) {
-            attval.add(node.attribute(i).getValue().toLowerCase());
+            attval.put(node.attribute(i).getName().toLowerCase(), node.attribute(i).getValue().toLowerCase());
+//            attval.add(node.attribute(i).getValue().toLowerCase());
         }
-        if (attval.contains(function) && attval.contains(param)) {
-            if (attval.contains("jevis")) {
+        if (attval.containsKey("function") && attval.containsKey("param") && attval.containsKey("type") && attval.get("function").equals(function) && attval.get("param").equals(param)) {
+            if (attval.get("type").equals("jevis")) {
                 return typJEVis(node, "jevis");
             }
-            if (attval.contains("id")) {
+            if (attval.get("type").equals("id")) {
                 return typJEVis(node, "id");
             }
-            if (attval.contains("value")) {
+            if (attval.get("type").equals("value")) {
                 return typValue(node);
             }
-            if (attval.contains("time")) {
+            if (attval.get("type").equals("time")) {
                 return typTime(node);
             }
-            if (attval.contains("trueorfalse")) {
+            if (attval.get("type").equals("trueorfalse")) {
                 return typTrueOrFalse(node);
             }
         } else if (!node.elements().isEmpty()) {
             for (Object under : node.elements()) {
                 Element undernode = (Element) under;
-                if (find(undernode, function, param, type) != null) {
-                    return find(undernode, function, param, type);
+                if (find(undernode, function, param) != null) {
+                    return find(undernode, function, param);
                 }
             }
         }
@@ -89,12 +92,12 @@ public class xmlLesenAcAtt {
         return null;
     }
     
-    private JEVisAttribute typJEVis(Element node, String typ) throws JEVisException {
+    private JEVisAttribute typJEVis(Element node, String type) throws JEVisException {
         JEVisAttributeTest myAtt1 = null;
         JEVisAttribute myAtt2 = null;
         List<JEVisSample> list = new ArrayList<JEVisSample>();
 
-        if (typ.equals("jevis")) {
+        if (type.equals("jevis")) {
             for (Object e : node.elements()) {
                 Element elem = (Element) e;
                 double value = Double.parseDouble(elem.attributeValue("value"));
@@ -107,7 +110,7 @@ public class xmlLesenAcAtt {
             return myAtt1;
         }
 
-        if (typ.equals("id")) {
+        if (type.equals("id")) {
             long id;
             List<String> key_to_database = new ArrayList<String>();
             for (Object e : node.elements()) {
