@@ -11,8 +11,11 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.jevis.api.JEVisAttribute;
+import org.jevis.api.JEVisDataSource;
 import org.jevis.api.JEVisException;
+import org.jevis.api.JEVisObject;
 import org.jevis.api.JEVisSample;
+import org.jevis.api.sql.JEVisDataSourceSQL;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -43,32 +46,46 @@ public class xmlLesenAcAtt {
     }
     
     private Object find(Element node, String function, String param, String type) throws JEVisException {
-        if(node.getName().equals("Parameter")){
-        if(node.attributeCount()!=3){
-            return null;
-        }
-        List<String> attval=new ArrayList<String>();
-        for(int i=0;i<node.attributeCount();i++){
+
+//        if(node.attributeCount()< 3){
+//            if (!node.elements().isEmpty()) {
+//            for (Object under : node.elements()) {
+//                Element undernode = (Element) under;
+//                if (find(undernode, function, param, type) != null) {
+//                    return find(undernode, function, param, type);
+//                }
+//            }
+//        }
+//        }
+        List<String> attval = new ArrayList<String>();
+        for (int i = 0; i < node.attributeCount(); i++) {
             attval.add(node.attribute(i).getValue().toLowerCase());
         }
-        if(attval.contains(function) && attval.contains(param) && attval.contains(type)){
-            if(attval.contains("jevis")){
-                return typJEVis(node,"jevis");
+        if (attval.contains(function) && attval.contains(param)) {
+            if (attval.contains("jevis")) {
+                return typJEVis(node, "jevis");
             }
-            if(attval.contains("id")){
-                return typJEVis(node,"id");
+            if (attval.contains("id")) {
+                return typJEVis(node, "id");
             }
-            if(attval.contains("value")){
+            if (attval.contains("value")) {
                 return typValue(node);
             }
-            if(attval.contains("time")){
+            if (attval.contains("time")) {
                 return typTime(node);
             }
-            if(attval.contains("trueorfalse")){
+            if (attval.contains("trueorfalse")) {
                 return typTrueOrFalse(node);
             }
+        } else if (!node.elements().isEmpty()) {
+            for (Object under : node.elements()) {
+                Element undernode = (Element) under;
+                if (find(undernode, function, param, type) != null) {
+                    return find(undernode, function, param, type);
+                }
+            }
         }
-        }
+//        }
         return null;
     }
     
@@ -90,23 +107,28 @@ public class xmlLesenAcAtt {
             return myAtt1;
         }
 
-//        if (typ.equals("ID")) {
-//            long id;
-//            List<String> key_to_database = new ArrayList<String>();
-//            for (Object e : node.elements()) {
-//                Element elem = (Element) e;
-//                key_to_database.add(elem.getText());
-//                System.out.println(elem.getText());
-//
-//            }
-//            JEVisDataSource ds = new JEVisDataSourceSQL(key_to_database.get(0), key_to_database.get(1), key_to_database.get(2), key_to_database.get(3), key_to_database.get(4));
-//
-//            ds.connect(key_to_database.get(5), key_to_database.get(6));
-//            id = Long.parseLong(key_to_database.get(key_to_database.size() - 1));
-//            JEVisObject obj = ds.getObject(id);
-//            myAtt2 = obj.getAttribute("Value");
-//            return myAtt2;
-//        }
+        if (typ.equals("id")) {
+            long id;
+            List<String> key_to_database = new ArrayList<String>();
+            for (Object e : node.elements()) {
+                Element elem = (Element) e;
+                key_to_database.add(elem.getText());
+                System.out.println(elem.getText());
+
+            }
+            try {
+                JEVisDataSource ds = new JEVisDataSourceSQL(key_to_database.get(0), key_to_database.get(1), key_to_database.get(2), key_to_database.get(3), key_to_database.get(4));
+                ds.connect(key_to_database.get(5), key_to_database.get(6));
+                id = Long.parseLong(key_to_database.get(key_to_database.size() - 1));
+
+                JEVisObject obj = ds.getObject(id);
+                myAtt2 = obj.getAttribute("Value");
+
+            } catch (Exception je) {
+                System.out.println(je.getMessage());
+            }
+            return myAtt2;
+        }
         return null;
     }
 

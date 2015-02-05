@@ -127,7 +127,8 @@ public class TestOption {
             TestFunction calc = new TestFunction();
 
             if (cl.hasOption("addition1")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition1"), "addition1", "1","JEVis");
+                in_param1 = (JEVisAttribute)xml.paserXML(cl.getOptionValue("addition1"), "addition1", "1","JEVis");
+//                System.out.println(xml.paserXML(cl.getOptionValue("addition1"), "addition1", "1","JEVis").getClass());
                 in_value = (List<Double>) xml.paserXML(cl.getOptionValue("addition1"), "addition1", "2","Value");
                 in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition1"), "addition1", "expResult","JEVis");
                 if (in_param1 != null && in_value != null && in_result != null) {
