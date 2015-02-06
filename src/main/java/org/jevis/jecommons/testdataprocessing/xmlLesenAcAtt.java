@@ -27,7 +27,7 @@ import org.joda.time.format.DateTimeFormatter;
  * @author gf
  */
 public class xmlLesenAcAtt {
-    public Object paserXML(String path, String function, String param, String type) throws DocumentException {
+    public Object paserXML(String path, String function, String param) throws DocumentException {
         Object myAtt = null;
         SAXReader reader = new SAXReader();
         try {

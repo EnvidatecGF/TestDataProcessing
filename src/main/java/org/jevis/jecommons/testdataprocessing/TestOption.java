@@ -127,47 +127,32 @@ public class TestOption {
             TestFunction calc = new TestFunction();
 
             if (cl.hasOption("addition1")) {
-                in_param1 = (JEVisAttribute)xml.paserXML(cl.getOptionValue("addition1"), "addition1", "1","JEVis");
+                in_param1 = (JEVisAttribute)xml.paserXML(cl.getOptionValue("addition1"), "addition1", "1");
 //                System.out.println(xml.paserXML(cl.getOptionValue("addition1"), "addition1", "1","JEVis").getClass());
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("addition1"), "addition1", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition1"), "addition1", "expResult","JEVis");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("addition1"), "addition1", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition1"), "addition1", "expResult");
                 if (in_param1 != null && in_value != null && in_result != null) {
                     calc.testAddition(in_param1, in_value.get(0), in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_result);
                 }
             }
             if (cl.hasOption("addition2")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "1","JEVis");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "2","JEVis");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "1");
+                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "expResult");
 
                 if (in_param1 != null && in_param2 != null && in_result != null) {
                     calc.testAddition(in_param1, in_param2, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_param2 == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_param2, in_result);
+                    
                 }
             }
             if (cl.hasOption("addition3")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "1","JEVis");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "2","JEVis");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "1");
+                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "expResult");
 
                 if (in_param1 != null && in_param2 != null && in_result != null) {
                     List<List<JEVisSample>> l = new ArrayList<List<JEVisSample>>();
@@ -175,613 +160,395 @@ public class TestOption {
                     l.add(in_param2.getAllSamples());
                     calc.testAddition(l, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_param2 == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_param2, in_result);
+                    
                 }
             }
             if (cl.hasOption("boundaryF")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "2");
                 List<Boolean> delete=new ArrayList<Boolean>();
-                delete=(List<Boolean>)xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "3","TrueOrFalse");
+                delete=(List<Boolean>)xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "3");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "expResult");
+                
                 if (in_param1 != null && in_value != null && in_result != null) {
                     calc.testBoundaryFilter(in_param1, in_value.get(0), in_value.get(1),delete.get(0), in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, delete, in_result);
+                    
                 }
             }
             if (cl.hasOption("cdConv")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("cdConv"), "cdConv", "1","JEVis");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("cdConv"), "cdConv", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("cdConv"), "cdConv", "1");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("cdConv"), "cdConv", "expResult");
                 if (in_param1 != null && in_result != null) {
                     calc.testCumulativeDifferentialConverter(in_param1, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_result);
+                    
                 }
             }
             if (cl.hasOption("highpassF1")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "expResult");
                 if (in_param1 != null && in_value != null && in_result != null) {
                     calc.testHighPassFilter(in_param1, in_value.get(0), in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_result);
+                    
                 }
             }
             if (cl.hasOption("highpassF2")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "expResult");
                 if (in_param1 != null && in_value != null && in_result != null) {
                     calc.testHighPassFilter(in_param1, in_value.get(0), in_value.get(1), in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_result);
+                    
                 }
             }
             if (cl.hasOption("integration1")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("integration1"), "integration1", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("integration1"), "integration1", "expResult","Value");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("integration1"), "integration1", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("integration1"), "integration1", "expResult");
                 if (in_param1 != null && in_value != null) {
                     calc.testIntegration(in_param1, in_value.get(0));
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value);
+                    
                 }
             }
             if (cl.hasOption("integration2")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "1","JEVis");
-                in_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "2","Time");//
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "expResult","Value");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "1");
+                in_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "2");//
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "expResult");
                 if (in_param1 != null && in_value != null && in_time != null) {
                     calc.testIntegration(in_param1, in_time.get(0), in_time.get(1), in_value.get(0));
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_time == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_time, in_value);
+                   
                 }
             }
             if (cl.hasOption("intervalalignment")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "2","Value");
-                in_time=(List<DateTime>)xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment","3","Time");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "2");
+                in_time=(List<DateTime>)xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment","3");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "expResult");
                 if (in_param1 != null && in_value != null && in_result != null) {
                     double v1 = in_value.get(0);
                     double v2 = in_value.get(1);
                     calc.testIntervalAlignment(in_param1,in_time.get(0),(int) v1, (int) v2, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_time == null){
-                        System.out.println("The third input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_time, in_result);
+                    
                 }
             }
             if (cl.hasOption("interpolation1")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "expResult");
 
                 if (in_param1 != null && in_value != null && in_result != null) {
                     double v1 = in_value.get(0);
                     calc.testLinearInterpolation(in_param1, (int) v1, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_result);
+                    
                 }
             }
             if (cl.hasOption("interpolation2")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "2","Value");
-                in_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "3","Time");//
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "2");
+                in_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "3");//
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "expResult");
                 if (in_param1 != null && in_value != null && in_result != null) {
                     double v1 = in_value.get(0);
                     calc.testLinearInterpolation(in_param1, in_time.get(0), in_time.get(1), (int) v1, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_time == null){
-                        System.out.println("The third input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_time, in_result);
+                   
                 }
             }
             if (cl.hasOption("linearscaling")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "expResult");
                 if (in_param1 != null && in_value != null && in_result != null) {
                     calc.testLinearScaling(in_param1, in_value.get(0), in_value.get(1), in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_result);
+                    
                 }
             }
             if (cl.hasOption("median")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("median"), "median", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("median"), "median", "expResult","Value");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("median"), "median", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("median"), "median", "expResult");
                 if (in_param1 != null && in_value != null) {
                     calc.testMedian(in_param1, in_value.get(0));
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value);
+                    
                 }
             }
             if (cl.hasOption("mergevalues")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "2","Value");
-                in_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "3","Time");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "2");
+                in_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "3");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "expResult");
 
                 if (in_param1 != null && in_value != null && in_time != null && in_result != null) {
                     double v1 = in_value.get(0);
                     double v2 = in_value.get(1);
                     calc.testMergeValues(in_param1, in_time.get(0), (int) v1, (int) v2, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_time == null){
-                        System.out.println("The third input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_time, in_result);
+                    
                 }
             }
             if (cl.hasOption("precisionfilter")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "expResult");
 
                 if (in_param1 != null && in_value != null && in_result != null) {
                     calc.testPrecisionFilter(in_param1, in_value.get(0), in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_result);
+                    
                 }
             }
             if (cl.hasOption("sortbytime")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "expResult");
                 if (in_param1 != null && in_value != null && in_result != null) {
                     double v1 = in_value.get(0);
                     calc.testSortByTime(in_param1, (int) v1, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_result);
+                    
                 }
             }
             if (cl.hasOption("sortbyvalue")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "expResult");
                 if (in_param1 != null && in_value != null && in_result != null) {
                     double v1 = in_value.get(0);
                     calc.testSortByValue(in_param1, (int) v1, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_result);
+                    
                 }
             }
             if (cl.hasOption("splitvalues")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "2");
                 List<Boolean> backward=new ArrayList<Boolean>();
-                backward=(List<Boolean>)xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "3","TrueOrFalse");
+                backward=(List<Boolean>)xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "3");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "expResult");
                 
                 if (in_param1 != null && in_value != null && in_result != null && backward != null) {
                     double v1 = in_value.get(0);
                     double v2 = in_value.get(1);
                     calc.testSplitValues(in_param1, (int) v1, (int) v2,backward.get(0), in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                }
-            }
-            if (cl.hasOption("subtraction1")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "expResult","JEVis");
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    calc.testSubtraction(in_param1, in_value.get(0), in_result);
-                } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                }
-            }
-            if (cl.hasOption("subtraction2")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "1","JEVis");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "2","JEVis");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "expResult","JEVis");
-                if (in_param1 != null && in_param2 != null && in_result != null) {
-                    calc.testSubtraction(in_param1, in_param2, in_result);
-                } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_param2 == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                }
-            }
-            if (cl.hasOption("allmin")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("allmin"), "allmin", "1","JEVis");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("allmin"), "allmin", "expResult","JEVis");
-                if (in_param1 != null && in_result != null) {
-                    calc.testValueAllMinimum(in_param1, in_result);
-                } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                }
-            }
-            if (cl.hasOption("min1")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min1"), "min1", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min1"), "min1", "expResult","Value");
-                if (in_param1 != null && in_value != null) {
-                    calc.testValueMinimum(in_param1, in_value.get(0));
-                } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                }
-            }
-            if (cl.hasOption("min2")) {
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "1","Value");
-                List<Double> in_value3 = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "2","Value");
-                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "expResult","Value");
-                if (in_value != null) {
-                    calc.testValueMinimum(in_value.get(0), in_value3.get(0), in_resultv.get(0));
-                } else {
+                    isNull(in_param1, in_value, backward, in_result);
                     
                 }
             }
+            if (cl.hasOption("subtraction1")) {
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "expResult");
+                if (in_param1 != null && in_value != null && in_result != null) {
+                    calc.testSubtraction(in_param1, in_value.get(0), in_result);
+                } else {
+                    isNull(in_param1, in_value, in_result);
+                    
+                }
+            }
+            if (cl.hasOption("subtraction2")) {
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "1");
+                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "expResult");
+                if (in_param1 != null && in_param2 != null && in_result != null) {
+                    calc.testSubtraction(in_param1, in_param2, in_result);
+                } else {
+                    isNull(in_param1, in_param2, in_result);
+                    
+                }
+            }
+            if (cl.hasOption("allmin")) {
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("allmin"), "allmin", "1");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("allmin"), "allmin", "expResult");
+                if (in_param1 != null && in_result != null) {
+                    calc.testValueAllMinimum(in_param1, in_result);
+                } else {
+                    isNull(in_param1,in_result);
+                    
+                }
+            }
+            if (cl.hasOption("min1")) {
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min1"), "min1", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min1"), "min1", "expResult");
+                if (in_param1 != null && in_value != null) {
+                    calc.testValueMinimum(in_param1, in_value.get(0));
+                } else {
+                    isNull(in_param1, in_value);
+                    
+                }
+            }
+//            if (cl.hasOption("min2")) {
+//                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "1");
+//                List<Double> in_value3 = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "2");
+//                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "expResult");
+//                if (in_value != null) {
+//                    calc.testValueMinimum(in_value.get(0), in_value3.get(0), in_resultv.get(0));
+//                } else {
+//                    isNull(in_value,in_value3);
+//                }
+//            }
             if (cl.hasOption("min3")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min3"), "min3", "1","JEVis");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min3"), "min3", "2","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min3"), "min3", "expResult","Value");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min3"), "min3", "1");
+                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min3"), "min3", "2");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min3"), "min3", "expResult");
                 if (in_param1 != null && in_param2 != null && in_value != null) {
                     List<List<JEVisSample>> attributes=new ArrayList<List<JEVisSample>>();
                     attributes.add(in_param1.getAllSamples());
                     attributes.add(in_param2.getAllSamples());
                     calc.testValueMinimum(attributes, in_value.get(0));
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_param2 == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_param2, in_value);
+                    
                 }
             }
             if (cl.hasOption("min4")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min4"), "min4", "1","JEVis");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min4"), "min4", "2","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min4"), "min4", "3","Value");
-                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("min4"), "min4", "expResult","Value");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min4"), "min4", "1");
+                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min4"), "min4", "2");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min4"), "min4", "3");
+                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("min4"), "min4", "expResult");
                 if (in_param1 != null && in_param2 != null && in_value != null && in_resultv != null) {
                     List<List<JEVisSample>> attributes=new ArrayList<List<JEVisSample>>();
                     attributes.add(in_param1.getAllSamples());
                     attributes.add(in_param2.getAllSamples());
                     calc.testValueMinimum(attributes, in_value.get(0), in_resultv.get(0));
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_param2 == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The third input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_resultv == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_param2, in_value, in_resultv);
+                    
                 }
             }
             if (cl.hasOption("findgap")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "2","Value");
-                in_time=(List<DateTime>)xml.paserXML(cl.getOptionValue("findgap"), "FindGap","3","Time");
-                result_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "expResult","Time");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "2");
+                in_time=(List<DateTime>)xml.paserXML(cl.getOptionValue("findgap"), "FindGap","3");
+                result_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "expResult");
                 if (in_param1 != null && in_time != null && in_value != null) {
                     double v1 = in_value.get(0);
                     double v2 = in_value.get(1);
                     calc.testFindGap(in_param1,in_time.get(0) ,(int) v1, (int) v2, result_time);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_time == null){
-                        System.out.println("The third input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(result_time == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_time, result_time);
+                    
                 }
             }
             if (cl.hasOption("dcConv")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("dcConv"), "dcConv", "1","JEVis");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("dcConv"), "dcConv", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("dcConv"), "dcConv", "1");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("dcConv"), "dcConv", "expResult");
                 if (in_param1 != null) {
                     calc.testDifferentialCumulativeConverter(in_param1,in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_result);
+                    
                 }
             }
             if (cl.hasOption("max")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("max"), "MaxValue", "1","JEVis");
-                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("max"), "MaxValue", "expResult","Value");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("max"), "MaxValue", "1");
+                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("max"), "MaxValue", "expResult");
                 if (in_param1 != null && in_resultv != null) {
                     calc.testMaxValue(in_param1,in_resultv.get(0));
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_resultv == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_resultv);
+                    
                 }
             }
             if (cl.hasOption("average")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("average"), "AverageValue", "1","JEVis");
-                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("average"), "AverageValue", "expResult","Value");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("average"), "AverageValue", "1");
+                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("average"), "AverageValue", "expResult");
                 if (in_param1 != null && in_resultv != null) {
                     calc.testAverageValue(in_param1,in_resultv.get(0));
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_resultv == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_resultv);
+                    
                 }
             }
             if (cl.hasOption("shifttime")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "expResult");
                 if (in_param1 != null && in_value!=null && in_result != null) {
                     double v1 = in_value.get(0);
                     calc.testShiftTime(in_param1, (int) v1,in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_result);
+                    
                 }
             }
             if (cl.hasOption("meandeviation")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("meandeviation"), "MeanDeviation", "1","JEVis");
-                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("meandeviation"), "MeanDeviation", "expResult","Value");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("meandeviation"), "MeanDeviation", "1");
+                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("meandeviation"), "MeanDeviation", "expResult");
                 if (in_param1 != null && in_resultv != null) {
                     calc.testMeanDeviation(in_param1,in_resultv.get(0));
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_resultv == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_resultv);
+                    
                 }
             }
             if (cl.hasOption("multiplication")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "1","JEVis");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "2","JEVis");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "1");
+                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "expResult");
                 if (in_param1 != null && in_param2 != null && in_result != null) {
                     calc.testMultiplication(in_param1, in_param2, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_param2 == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_param2, in_result);
+                    
                 }
             }
             if (cl.hasOption("division")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "1","JEVis");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "2","JEVis");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "1");
+                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "expResult");
                 if (in_param1 != null && in_param2 != null && in_result != null) {
                     calc.testDivision(in_param1, in_param2, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_param2 == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_param2, in_result);
+                    
                 }
             }
             if (cl.hasOption("lowpassF")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "expResult");
                 if (in_param1 != null && in_value != null && in_result != null) {
                     calc.testLowPassFilter(in_param1, in_value.get(0), in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_result);
+                    
                 }
             }
             if (cl.hasOption("derivation")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "1","JEVis");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "2","Value");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "expResult","JEVis");
+                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "1");
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "2");
+                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "expResult");
                 if (in_param1 != null && in_value != null && in_result != null) {
                     double v1 = in_value.get(0);
                     calc.testDerivation_JEVisAttribute_Int(in_param1, (int) v1, in_result);
                 } else {
-                    if(in_param1 == null){
-                        System.out.println("The first input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_value == null){
-                        System.out.println("The second input parameter can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
-                    if(in_result == null){
-                        System.out.println("The expected result can't be found in XML file,please check the attributes of node \"Parameter\"");
-                    }
+                    isNull(in_param1, in_value, in_result);
+                    
                 }
             }
 
@@ -1112,6 +879,18 @@ public class TestOption {
 //                System.out.println("Next we will test our Interpolation Function");
 //                InterpolationTest.interpLinearTestLocal(command[1], Integer.parseInt(command[2]), command[3]);
 //            }
+        }
+    }
+    
+    public void isNull(Object... obj) {
+        for (int i = 0; i < obj.length; i++) {
+            if (obj[i] == null) {
+                if (i == obj.length - 1) {
+                    System.out.println("The expected result can't be found in XML file,please check the attributes of node");
+                } else {
+                    System.out.println("The parameter " + (i+1) + " can't be found in XML file,please check the attributes of node");
+                }
+            }
         }
     }
 }
