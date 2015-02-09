@@ -22,7 +22,7 @@ import org.joda.time.DateTime;
 
 /**
  *
- * @author Ulrich
+ * @author gf
  */
 public class TestOption {
 
@@ -171,7 +171,7 @@ public class TestOption {
                 delete=(List<Boolean>)xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "3");
                 in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "expResult");
                 
-                if (in_param1 != null && in_value != null && in_result != null) {
+                if (in_param1 != null && in_value != null && delete != null && in_result != null) {
                     calc.testBoundaryFilter(in_param1, in_value.get(0), in_value.get(1),delete.get(0), in_result);
                 } else {
                     isNull(in_param1, in_value, delete, in_result);
@@ -236,7 +236,7 @@ public class TestOption {
                 in_value = (List<Double>) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "2");
                 in_time=(List<DateTime>)xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment","3");
                 in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "expResult");
-                if (in_param1 != null && in_value != null && in_result != null) {
+                if (in_param1 != null && in_value != null && in_time != null && in_result != null) {
                     double v1 = in_value.get(0);
                     double v2 = in_value.get(1);
                     calc.testIntervalAlignment(in_param1,in_time.get(0),(int) v1, (int) v2, in_result);
@@ -263,7 +263,7 @@ public class TestOption {
                 in_value = (List<Double>) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "2");
                 in_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "3");//
                 in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "expResult");
-                if (in_param1 != null && in_value != null && in_result != null) {
+                if (in_param1 != null && in_value != null && in_time != null && in_result != null) {
                     double v1 = in_value.get(0);
                     calc.testLinearInterpolation(in_param1, in_time.get(0), in_time.get(1), (int) v1, in_result);
                 } else {
@@ -401,16 +401,16 @@ public class TestOption {
                     
                 }
             }
-//            if (cl.hasOption("min2")) {
-//                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "1");
-//                List<Double> in_value3 = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "2");
-//                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "expResult");
-//                if (in_value != null) {
-//                    calc.testValueMinimum(in_value.get(0), in_value3.get(0), in_resultv.get(0));
-//                } else {
-//                    isNull(in_value,in_value3);
-//                }
-//            }
+            if (cl.hasOption("min2")) {
+                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "1");
+                List<Double> in_value3 = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "2");
+                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "expResult");
+                if (in_value != null) {
+                    calc.testValueMinimum(in_value.get(0), in_value3.get(0), in_resultv.get(0));
+                } else {
+                    isNull(in_value,in_value3);
+                }
+            }
             if (cl.hasOption("min3")) {
                 in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min3"), "min3", "1");
                 in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min3"), "min3", "2");
@@ -445,7 +445,7 @@ public class TestOption {
                 in_value = (List<Double>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "2");
                 in_time=(List<DateTime>)xml.paserXML(cl.getOptionValue("findgap"), "FindGap","3");
                 result_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "expResult");
-                if (in_param1 != null && in_time != null && in_value != null) {
+                if (in_param1 != null && in_time != null && in_value != null && result_time != null) {
                     double v1 = in_value.get(0);
                     double v2 = in_value.get(1);
                     calc.testFindGap(in_param1,in_time.get(0) ,(int) v1, (int) v2, result_time);
@@ -457,7 +457,7 @@ public class TestOption {
             if (cl.hasOption("dcConv")) {
                 in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("dcConv"), "dcConv", "1");
                 in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("dcConv"), "dcConv", "expResult");
-                if (in_param1 != null) {
+                if (in_param1 != null && in_result != null) {
                     calc.testDifferentialCumulativeConverter(in_param1,in_result);
                 } else {
                     isNull(in_param1, in_result);
@@ -882,7 +882,7 @@ public class TestOption {
         }
     }
     
-    public void isNull(Object... obj) {
+    private void isNull(Object... obj) {
         for (int i = 0; i < obj.length; i++) {
             if (obj[i] == null) {
                 if (i == obj.length - 1) {

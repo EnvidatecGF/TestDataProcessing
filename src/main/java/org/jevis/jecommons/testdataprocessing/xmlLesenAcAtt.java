@@ -49,16 +49,6 @@ public class xmlLesenAcAtt {
     
     private Object find(Element node, String function, String param) throws JEVisException {
 
-//        if(node.attributeCount()< 3){
-//            if (!node.elements().isEmpty()) {
-//            for (Object under : node.elements()) {
-//                Element undernode = (Element) under;
-//                if (find(undernode, function, param, type) != null) {
-//                    return find(undernode, function, param, type);
-//                }
-//            }
-//        }
-//        }
         Map<String,String> attval = new HashMap<String,String>();
         for (int i = 0; i < node.attributeCount(); i++) {
             attval.put(node.attribute(i).getName().toLowerCase(), node.attribute(i).getValue().toLowerCase());
@@ -81,10 +71,10 @@ public class xmlLesenAcAtt {
                 return typTrueOrFalse(node);
             }
         } else if (!node.elements().isEmpty()) {
-            for (Object under : node.elements()) {
-                Element undernode = (Element) under;
-                if (find(undernode, function, param) != null) {
-                    return find(undernode, function, param);
+            for (Object sub : node.elements()) {
+                Element subnode = (Element) sub;
+                if (find(subnode, function, param) != null) {
+                    return find(subnode, function, param);
                 }
             }
         }

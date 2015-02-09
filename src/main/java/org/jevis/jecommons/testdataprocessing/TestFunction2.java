@@ -20,7 +20,7 @@ import org.joda.time.DateTime;
 
 /**
  *
- * @author gf
+ * @author jx
  */
 public class TestFunction2 {
     //fertig

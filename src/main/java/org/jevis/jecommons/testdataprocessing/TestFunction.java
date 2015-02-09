@@ -5,7 +5,6 @@
 package org.jevis.jecommons.testdataprocessing;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 import org.jevis.api.JEVisAttribute;
 import org.jevis.api.JEVisException;
@@ -348,7 +347,12 @@ public class TestFunction {
     
     public void testValueMinimum(List<List<JEVisSample>> attributes,double exp) throws Exception {
         System.out.println("valueMinimum3");
-        
+        for (List<JEVisSample> samples : attributes) {
+            System.out.println("***********************************");
+            for(JEVisSample sample: samples){
+                System.out.println(sample.getTimestamp() + ";" + sample.getValue());
+            }
+        }
         DataCalc calc = new DataCalcSQL();
 //        List<List<JEVisSample>> myAtts=new ArrayList<List<JEVisSample>>();
 //        myAtts.add(attribute1.getAllSamples());
@@ -361,6 +365,14 @@ public class TestFunction {
 
     public void testValueMinimum(List<List<JEVisSample>> attributes,double value,double exp) throws Exception {
         System.out.println("valueMinimum4");
+        for (List<JEVisSample> samples : attributes) {
+            System.out.println("***********************************");
+            for(JEVisSample sample: samples){
+                System.out.println(sample.getTimestamp() + ";" + sample.getValue());
+            }
+        }
+        System.out.println("***********************************");
+        System.out.println(value);
         
         DataCalc calc = new DataCalcSQL();
 //        List<List<JEVisSample>> myAtts=new ArrayList<List<JEVisSample>>();
