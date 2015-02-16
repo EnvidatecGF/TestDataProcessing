@@ -10,8 +10,7 @@ import org.jevis.api.JEVisAttribute;
 import org.jevis.api.JEVisException;
 import org.jevis.api.JEVisSample;
 import org.jevis.jecommons.dataprocessing.DataCalc;
-import org.jevis.jecommons.dataprocessing.sql.DataCalcSQL;
-import org.jevis.jecommons.dataprocessing.sql.App;
+import org.jevis.jecommons.dataprocessing.App;
 import org.joda.time.DateTime;
 
 /**
@@ -29,7 +28,7 @@ public class TestFunction {
         System.out.println("*******************");
         System.out.println(value);
         
-       DataCalc calc = new DataCalcSQL();
+       DataCalc calc = new DataCalc();
        
         System.out.println("Addition1 Result:");
         App.output(calc.addition(attribute.getAllSamples(), value));
@@ -50,11 +49,11 @@ public class TestFunction {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         
         System.out.println("Addition2 Result:");
-        App.output(((DataCalcSQL)calc).addition(attribute1.getAllSamples(), attribute2.getAllSamples()));
-        comp.compareJEVis(exp, ((DataCalcSQL)calc).addition(attribute1.getAllSamples(), attribute2.getAllSamples()));
+        App.output(((DataCalc)calc).addition(attribute1.getAllSamples(), attribute2.getAllSamples()));
+        comp.compareJEVis(exp, ((DataCalc)calc).addition(attribute1.getAllSamples(), attribute2.getAllSamples()));
     }
     
     public void testAddition(List<List<JEVisSample>> attributes,JEVisAttribute exp) throws Exception {
@@ -67,7 +66,7 @@ public class TestFunction {
             }
         }
     
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         
         System.out.println("Addition3 Result:");
         App.output(calc.addition(attributes));
@@ -80,7 +79,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc=new DataCalcSQL();
+        DataCalc calc=new DataCalc();
         System.out.println("BoundaryFilter Result:");
         App.output(calc.boundaryFilter(attribute1.getAllSamples(), up, low,delete));
         comp.compareJEVis(exp, calc.boundaryFilter(attribute1.getAllSamples(), up, low,delete));
@@ -91,7 +90,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         System.out.println("CumulativeDifferentialConverter Result:");
         App.output(calc.cumulativeDifferentialConverter(attribute1.getAllSamples()));
         comp.compareJEVis(exp, calc.cumulativeDifferentialConverter(attribute1.getAllSamples()));
@@ -102,7 +101,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc=new DataCalcSQL();
+        DataCalc calc=new DataCalc();
         System.out.println("HighPassFilter1 Result:");
         App.output(calc.highPassFilter(attribute1.getAllSamples(),boundary));
         comp.compareJEVis(exp, calc.highPassFilter(attribute1.getAllSamples(),boundary));
@@ -114,7 +113,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc=new DataCalcSQL();
+        DataCalc calc=new DataCalc();
         System.out.println("HighPassFilter2 Result:");
         App.output(calc.highPassFilter(attribute1.getAllSamples(),boundary,fill_value));
         comp.compareJEVis(exp, calc.highPassFilter(attribute1.getAllSamples(),boundary,fill_value));
@@ -126,7 +125,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         
         Double result = calc.integration(attribute1.getAllSamples());
         System.out.println("integration1 Result:");
@@ -140,7 +139,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         
         Double result = calc.integration(attribute1.getSamples(from, to));
         System.out.println("integration2 Result:");
@@ -153,7 +152,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc=new DataCalcSQL();
+        DataCalc calc=new DataCalc();
         System.out.println("intervalAlignment Result:");
         App.output(calc.intervalAlignment(attribute1.getAllSamples(),begin_time,period_s,deviation_s));//begin,
         comp.compareJEVis(exp, calc.intervalAlignment(attribute1.getAllSamples(),begin_time,period_s,deviation_s));//begin,
@@ -165,7 +164,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         System.out.println("linearInterpolation1 Result:");
         App.output(calc.linearInterpolation(attribute1.getAllSamples(),insert_num));
         comp.compareJEVis(exp, calc.linearInterpolation(attribute1.getAllSamples(),insert_num));
@@ -177,10 +176,10 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         System.out.println("linearInterpolation2 Result:");
-        App.output(((DataCalcSQL)calc).linearInterpolation(attribute1,from, to,insert_num));
-        comp.compareJEVis(exp, ((DataCalcSQL)calc).linearInterpolation(attribute1,from, to,insert_num));
+        App.output(((DataCalc)calc).linearInterpolation(attribute1,from, to,insert_num));
+        comp.compareJEVis(exp, ((DataCalc)calc).linearInterpolation(attribute1,from, to,insert_num));
         
     }
 
@@ -189,7 +188,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         System.out.println("linearScaling Result:");
         App.output(calc.linearScaling(attribute1.getAllSamples(),proportion,b));
         comp.compareJEVis(exp, calc.linearScaling(attribute1.getAllSamples(),proportion,b));
@@ -201,7 +200,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         Double result = calc.median(attribute1.getAllSamples());
         System.out.println("median Result:");
         System.out.println(result);
@@ -213,7 +212,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         System.out.println("mergeValues Result:");
         App.output(calc.mergeValues(attribute1.getAllSamples(),begin,period_s,meg_num));
         comp.compareJEVis(exp, calc.mergeValues(attribute1.getAllSamples(),begin,period_s,meg_num));
@@ -225,7 +224,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         System.out.println("precisionFilter Result:");
         App.output(calc.precisionFilter(attribute1.getAllSamples(),percent));
         comp.compareJEVis(exp, calc.precisionFilter(attribute1.getAllSamples(),percent));
@@ -241,7 +240,7 @@ public class TestFunction {
         System.out.println("******************");
         System.out.println(order);
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("sortByTime Result:");
         App.output(calc.sortByTime(attribute1.getAllSamples(), order));
@@ -257,7 +256,7 @@ public class TestFunction {
         System.out.println("******************");
         System.out.println(order);
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("sortByValue Result:");
         App.output(calc.sortByValue(attribute1.getAllSamples(), order));
@@ -269,7 +268,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         System.out.println("splitValues Result:");
         App.output(calc.splitValues(attribute1.getAllSamples(),period_s,seg_num,backward));
         comp.compareJEVis(exp, calc.splitValues(attribute1.getAllSamples(),period_s,seg_num,backward));
@@ -283,7 +282,7 @@ public class TestFunction {
         System.out.println("******************");
         System.out.println(value);
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("subtraction1 Result:");
         App.output(calc.subtraction(attribute1.getAllSamples(), value));
@@ -302,7 +301,7 @@ public class TestFunction {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         
         System.out.println("subtraction2 Result:");
         App.output(calc.subtraction(attribute1.getAllSamples(), attribute2.getAllSamples()));
@@ -315,7 +314,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         System.out.println("AllMinimum Result:");
         App.output(calc.valueAllMinimum(attribute1.getAllSamples()));
         comp.compareJEVis(exp,calc.valueAllMinimum(attribute1.getAllSamples()));
@@ -327,7 +326,7 @@ public class TestFunction {
         for (JEVisSample sample : attribute1.getAllSamples()) {
             System.out.println(sample.getTimestamp() + ";" + sample.getValue());
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         
         double result = calc.valueMinimum(attribute1.getAllSamples());
         System.out.println("valueMinimum1 Result:");
@@ -339,7 +338,7 @@ public class TestFunction {
         System.out.println("valueMinimum2");
         System.out.println(v1+"\n"+v2);
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
         System.out.println("valueMinimum2 Result:");
         System.out.println(Math.min(v1, v2));
         comp.compareValue(exp, Math.min(v1, v2));
@@ -353,7 +352,7 @@ public class TestFunction {
                 System.out.println(sample.getTimestamp() + ";" + sample.getValue());
             }
         }
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 //        List<List<JEVisSample>> myAtts=new ArrayList<List<JEVisSample>>();
 //        myAtts.add(attribute1.getAllSamples());
 //        myAtts.add(attribute2.getAllSamples());
@@ -374,7 +373,7 @@ public class TestFunction {
         System.out.println("***********************************");
         System.out.println(value);
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 //        List<List<JEVisSample>> myAtts=new ArrayList<List<JEVisSample>>();
 //        myAtts.add(attribute1.getAllSamples());
 //        myAtts.add(attribute2.getAllSamples());
@@ -394,14 +393,14 @@ public class TestFunction {
         System.out.println(period_s);
         System.out.println(deviation_s);
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("findGap Result:");
-        for (DateTime gaptime : ((DataCalcSQL)calc).findGap(attribute1.getAllSamples(),begin_time, period_s, deviation_s)) {
+        for (DateTime gaptime : ((DataCalc)calc).findGap(attribute1.getAllSamples(),begin_time, period_s, deviation_s)) {
             System.out.println(gaptime);
         }
         
-        comp.compareTime(exp, ((DataCalcSQL)calc).findGap(attribute1.getAllSamples(),begin_time, period_s,deviation_s));
+        comp.compareTime(exp, ((DataCalc)calc).findGap(attribute1.getAllSamples(),begin_time, period_s,deviation_s));
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void testMultiplication(JEVisAttribute samples1,JEVisAttribute samples2,JEVisAttribute exp) throws JEVisException, ParseException {
@@ -417,7 +416,7 @@ public class TestFunction {
         }
         System.out.println("******************");
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("Multiplication Result:");
         for (JEVisSample result : calc.multiplication(samples1.getAllSamples(),samples2.getAllSamples())) {
@@ -440,7 +439,7 @@ public class TestFunction {
         }
         System.out.println("******************");
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("Division Result:");
         for (JEVisSample result : calc.division(samples1.getAllSamples(),samples2.getAllSamples())) {
@@ -458,7 +457,7 @@ public class TestFunction {
         }
         System.out.println("******************");
        
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("AverageValue:");
         
@@ -475,7 +474,7 @@ public class TestFunction {
         }
         System.out.println("******************");
        
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("MaxValue Result:");
         
@@ -492,7 +491,7 @@ public class TestFunction {
         }
         System.out.println("******************");
        
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("MeanDeviation Result:");
         
@@ -513,7 +512,7 @@ public class TestFunction {
         
         System.out.println("******************");
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("ShiftTime Result:");
         for (JEVisSample result : calc.addShiftTime(samples1.getAllSamples(), shiftTime)) {
@@ -535,7 +534,7 @@ public class TestFunction {
         
         System.out.println("******************");
         
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("LowPassFilter Result:");
         for (JEVisSample result : calc.lowPassFilter(samples1.getAllSamples(), lowerlimit)) {
@@ -554,7 +553,7 @@ public class TestFunction {
         System.out.println("******************");
         System.out.println("period_s: "+period_s);
        
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("Deviation1 Result:");
         for (JEVisSample result : calc.derivation(samples1.getAllSamples(),period_s)) {
@@ -572,7 +571,7 @@ public class TestFunction {
         }
         System.out.println("******************");
        
-        DataCalc calc = new DataCalcSQL();
+        DataCalc calc = new DataCalc();
 
         System.out.println("DCConverter Result:");
         for (JEVisSample result : calc.differentialCumulativeConverter(samples1.getAllSamples())) {

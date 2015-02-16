@@ -16,7 +16,7 @@ import org.jevis.api.JEVisObject;
 import org.jevis.api.JEVisSample;
 import org.jevis.api.JEVisType;
 import org.jevis.api.JEVisUnit;
-import org.jevis.jecommons.dataprocessing.sql.DataCompareTime;
+import org.jevis.jecommons.dataprocessing.DataCompareTime;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 
