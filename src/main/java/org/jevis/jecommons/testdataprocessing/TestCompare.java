@@ -28,7 +28,9 @@ public boolean compareJEVis(JEVisAttribute expRe,List<JEVisSample> re) throws JE
             return false;
         }
         for (int i=0;i<size;i++){
-            if(!result.get(i).getTimestamp().equals(expResult.get(i).getTimestamp()) || !result.get(i).getValueAsString().equals(expResult.get(i).getValueAsString())){
+ //add one judgement condition
+            if(!result.get(i).getTimestamp().equals(expResult.get(i).getTimestamp()) ||(!result.get(i).getValueAsString().equals(expResult.get(i).getValueAsString()))){
+//?????????||Math.abs((result.get(i).getValueAsDouble()-expResult.get(i).getValueAsDouble()))>0.01){
                 System.out.println("*************************************************False");
 //                System.out.println(result.get(i).getTimestamp()+"!!!!!"+expResult.get(i).getTimestamp());
 //                System.out.println(result.get(i).getValueAsString()+"!!!!!"+expResult.get(i).getValueAsString());
