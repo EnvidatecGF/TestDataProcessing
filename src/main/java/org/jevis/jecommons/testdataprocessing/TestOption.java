@@ -488,7 +488,7 @@ public class TestOption {
                 in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "1");
                 in_value = (List<Double>) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "2");
                 in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "expResult");
-                if (in_param1 != null && in_value!=null && in_result != null) {
+                if (in_param1!= null && in_value!=null && in_result != null) {
                     double v1 = in_value.get(0);
                     calc.testShiftTime(in_param1, (int) v1,in_result);
                 } else {
@@ -893,4 +893,16 @@ public class TestOption {
             }
         }
     }
+    
+//    private void isJEVisEmpty(JEVisAttribute... att) {
+//        for (int i = 0; i < att.length; i++) {
+//            if (att[i].getSampleCount() == 0) {
+//                if (i == att.length - 1) {
+//                    System.out.println("The expected result can't be found in XML file,please check the attributes of node");
+//                } else {
+//                    System.out.println("The parameter " + (i+1) + " can't be found in XML file,please check the attributes of node");
+//                }
+//            }
+//        }
+//    }
 }
