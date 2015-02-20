@@ -55,13 +55,13 @@ public class xmlLesen {
 //                String attributename=param.get(i).attributeValue("typ").toUpperCase();
 //                
 //                if (paramname.equals("SAMPLES") && attributename.equals("JEVIS") || attributename.equals("ID")) {
-//                    return typJEVis(param.get(i), attributename);
+//                    return typeJEVis(param.get(i), attributename);
 //                } else if (paramname.equals("SAMPLES") && attributename.equals("VALUE")) {
-//                    return typValue(param.get(i));
+//                    return typeValue(param.get(i));
 //                } else if (paramname.equals("SAMPLES") && attributename.equals("TIME")) {
-//                    return typTime(param.get(i));
+//                    return typeTime(param.get(i));
 //                }else if (paramname.equals("SAMPLES") && attributename.equals("TRUEORFALSE")) {
-//                    return typTrueOrFalse(param.get(i));
+//                    return typeTrueOrFalse(param.get(i));
 //                }
 //            }
 //        } else if (node.getName().toUpperCase().equals("RESULT") && node.attributeValue("function").toUpperCase().equals(function.toUpperCase()) && node.attributeValue("name").toUpperCase().equals(sample.toUpperCase())) {
@@ -71,11 +71,11 @@ public class xmlLesen {
 //                String attributename=param.get(j).attributeValue("typ").toUpperCase();
 //                
 //                if (paramname.equals("SAMPLES") && attributename.equals("JEVIS") || attributename.equals("ID")) {
-//                    return typJEVis(param.get(j), attributename);
+//                    return typeJEVis(param.get(j), attributename);
 //                } else if (paramname.equals("SAMPLES") && attributename.equals("VALUE")) {
-//                    return typValue(param.get(j));
+//                    return typeValue(param.get(j));
 //                } else if (paramname.equals("SAMPLES") && attributename.equals("TIME")) {
-//                    return typTime(param.get(j));
+//                    return typeTime(param.get(j));
 //                }
 //            }
 //        }
@@ -106,7 +106,7 @@ public class xmlLesen {
 ////        }
 ////        return myAtt;
 ////    }
-//    private JEVisAttribute typJEVis(Element node, String typ) throws JEVisException {
+//    private JEVisAttribute typeJEVis(Element node, String typ) throws JEVisException {
 //        JEVisAttributeTest myAtt1 = null;
 //        JEVisAttribute myAtt2 = null;
 //        List<JEVisSample> list = new ArrayList<JEVisSample>();
@@ -152,7 +152,7 @@ public class xmlLesen {
 //        return null;
 //    }
 //
-//    private List<Double> typValue(Element node) {
+//    private List<Double> typeValue(Element node) {
 //        List<Double> list = new ArrayList<Double>();
 //
 ////        if (!node.getName().equals("Samples")) {
@@ -171,7 +171,7 @@ public class xmlLesen {
 //        return list;
 //    }
 //
-//    private List<DateTime> typTime(Element node) {
+//    private List<DateTime> typeTime(Element node) {
 //        List<DateTime> list = new ArrayList<DateTime>();
 //
 ////        if (!node.getName().equals("Samples")) {
@@ -191,7 +191,7 @@ public class xmlLesen {
 //        return list;
 //    }
 //        
-//    private List<Boolean> typTrueOrFalse(Element node) {
+//    private List<Boolean> typeTrueOrFalse(Element node) {
 //        List<Boolean> list = new ArrayList<Boolean>();
 //
 //        for (Object e : node.elements()) {

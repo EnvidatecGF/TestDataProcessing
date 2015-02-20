@@ -11,13 +11,9 @@ import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.UnrecognizedOptionException;
 import org.jevis.api.JEVisAttribute;
-import org.jevis.api.JEVisDataSource;
-import org.jevis.api.JEVisObject;
 import org.jevis.api.JEVisSample;
-import org.jevis.api.sql.JEVisDataSourceSQL;
 import org.joda.time.DateTime;
 
 /**
@@ -116,438 +112,438 @@ public class TestOption {
 //            xmlLesen xml2 = new xmlLesen();
             xmlLesenAcAtt xml = new xmlLesenAcAtt();
             
-            JEVisAttribute in_param1;
-            JEVisAttribute in_param2;
-            JEVisAttribute in_result;
-            List<Double> in_value;
-            List<Double> in_resultv;
-            List<DateTime> in_time;
-            List<DateTime> result_time;
-            
+            JEVisAttribute inParam1;
+            JEVisAttribute inParam2;
+            JEVisAttribute inResult;
+            List<Double> inValue;
+            List<Double> inResultV;
+            List<DateTime> inTime;
+            List<DateTime> resultTime;
+//            inTime
             TestFunction calc = new TestFunction();
 
             if (cl.hasOption("addition1")) {
-                in_param1 = (JEVisAttribute)xml.paserXML(cl.getOptionValue("addition1"), "addition1", "1");
+                inParam1 = (JEVisAttribute)xml.paserXML(cl.getOptionValue("addition1"), "addition1", "1");
 //                System.out.println(xml.paserXML(cl.getOptionValue("addition1"), "addition1", "1","JEVis").getClass());
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("addition1"), "addition1", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition1"), "addition1", "expResult");
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    calc.testAddition(in_param1, in_value.get(0), in_result);
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("addition1"), "addition1", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition1"), "addition1", "expResult");
+                if (inParam1 != null && inValue != null && inResult != null) {
+                    calc.testAddition(inParam1, inValue.get(0), inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                 }
             }
             if (cl.hasOption("addition2")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "1");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "expResult");
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "1");
+                inParam2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition2"), "addition2", "expResult");
 
-                if (in_param1 != null && in_param2 != null && in_result != null) {
-                    calc.testAddition(in_param1, in_param2, in_result);
+                if (inParam1 != null && inParam2 != null && inResult != null) {
+                    calc.testAddition(inParam1, inParam2, inResult);
                 } else {
-                    isNull(in_param1, in_param2, in_result);
+                    isNull(inParam1, inParam2, inResult);
                     
                 }
             }
             if (cl.hasOption("addition3")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "1");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "expResult");
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "1");
+                inParam2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("addition3"), "addition2", "expResult");
 
-                if (in_param1 != null && in_param2 != null && in_result != null) {
+                if (inParam1 != null && inParam2 != null && inResult != null) {
                     List<List<JEVisSample>> l = new ArrayList<List<JEVisSample>>();
-                    l.add(in_param1.getAllSamples());
-                    l.add(in_param2.getAllSamples());
-                    calc.testAddition(l, in_result);
+                    l.add(inParam1.getAllSamples());
+                    l.add(inParam2.getAllSamples());
+                    calc.testAddition(l, inResult);
                 } else {
-                    isNull(in_param1, in_param2, in_result);
+                    isNull(inParam1, inParam2, inResult);
                     
                 }
             }
             if (cl.hasOption("boundaryF")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "2");
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "2");
                 List<Boolean> delete=new ArrayList<Boolean>();
                 delete=(List<Boolean>)xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "3");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "expResult");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("boundaryF"), "BoundaryFilter", "expResult");
                 
-                if (in_param1 != null && in_value != null && delete != null && in_result != null) {
-                    calc.testBoundaryFilter(in_param1, in_value.get(0), in_value.get(1),delete.get(0), in_result);
+                if (inParam1 != null && inValue != null && delete != null && inResult != null) {
+                    calc.testBoundaryFilter(inParam1, inValue.get(0), inValue.get(1),delete.get(0), inResult);
                 } else {
-                    isNull(in_param1, in_value, delete, in_result);
+                    isNull(inParam1, inValue, delete, inResult);
                     
                 }
             }
             if (cl.hasOption("cdConv")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("cdConv"), "cdConv", "1");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("cdConv"), "cdConv", "expResult");
-                if (in_param1 != null && in_result != null) {
-                    calc.testCumulativeDifferentialConverter(in_param1, in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("cdConv"), "cdConv", "1");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("cdConv"), "cdConv", "expResult");
+                if (inParam1 != null && inResult != null) {
+                    calc.testCumulativeDifferentialConverter(inParam1, inResult);
                 } else {
-                    isNull(in_param1, in_result);
+                    isNull(inParam1, inResult);
                     
                 }
             }
             if (cl.hasOption("highpassF1")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "expResult");
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    calc.testHighPassFilter(in_param1, in_value.get(0), in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF1"), "highpassF1", "expResult");
+                if (inParam1 != null && inValue != null && inResult != null) {
+                    calc.testHighPassFilter(inParam1, inValue.get(0), inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                     
                 }
             }
             if (cl.hasOption("highpassF2")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "expResult");
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    calc.testHighPassFilter(in_param1, in_value.get(0), in_value.get(1), in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("highpassF2"), "highpassF2", "expResult");
+                if (inParam1 != null && inValue != null && inResult != null) {
+                    calc.testHighPassFilter(inParam1, inValue.get(0), inValue.get(1), inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                     
                 }
             }
             if (cl.hasOption("integration1")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("integration1"), "integration1", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("integration1"), "integration1", "expResult");
-                if (in_param1 != null && in_value != null) {
-                    calc.testIntegration(in_param1, in_value.get(0));
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("integration1"), "integration1", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("integration1"), "integration1", "expResult");
+                if (inParam1 != null && inValue != null) {
+                    calc.testIntegration(inParam1, inValue.get(0));
                 } else {
-                    isNull(in_param1, in_value);
+                    isNull(inParam1, inValue);
                     
                 }
             }
             if (cl.hasOption("integration2")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "1");
-                in_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "2");//
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "expResult");
-                if (in_param1 != null && in_value != null && in_time != null) {
-                    calc.testIntegration(in_param1, in_time.get(0), in_time.get(1), in_value.get(0));
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "1");
+                inTime = (List<DateTime>) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "2");//
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("integration2"), "integration2", "expResult");
+                if (inParam1 != null && inValue != null && inTime != null) {
+                    calc.testIntegration(inParam1, inTime.get(0), inTime.get(1), inValue.get(0));
                 } else {
-                    isNull(in_param1, in_time, in_value);
+                    isNull(inParam1, inTime, inValue);
                    
                 }
             }
             if (cl.hasOption("intervalalignment")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "2");
-                in_time=(List<DateTime>)xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment","3");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "expResult");
-                if (in_param1 != null && in_value != null && in_time != null && in_result != null) {
-                    double v1 = in_value.get(0);
-                    double v2 = in_value.get(1);
-                    calc.testIntervalAlignment(in_param1,in_time.get(0),(int) v1, (int) v2, in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "2");
+                inTime=(List<DateTime>)xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment","3");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("intervalalignment"), "intervalalignment", "expResult");
+                if (inParam1 != null && inValue != null && inTime != null && inResult != null) {
+                    double v1 = inValue.get(0);
+                    double v2 = inValue.get(1);
+                    calc.testIntervalAlignment(inParam1,inTime.get(0),(int) v1, (int) v2, inResult);
                 } else {
-                    isNull(in_param1, in_value, in_time, in_result);
+                    isNull(inParam1, inValue, inTime, inResult);
                     
                 }
             }
             if (cl.hasOption("interpolation1")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "expResult");
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation1"), "interpolation1", "expResult");
 
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    double v1 = in_value.get(0);
-                    calc.testLinearInterpolation(in_param1, (int) v1, in_result);
+                if (inParam1 != null && inValue != null && inResult != null) {
+                    double v1 = inValue.get(0);
+                    calc.testLinearInterpolation(inParam1, (int) v1, inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                     
                 }
             }
             if (cl.hasOption("interpolation2")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "2");
-                in_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "3");//
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "expResult");
-                if (in_param1 != null && in_value != null && in_time != null && in_result != null) {
-                    double v1 = in_value.get(0);
-                    calc.testLinearInterpolation(in_param1, in_time.get(0), in_time.get(1), (int) v1, in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "2");
+                inTime = (List<DateTime>) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "3");//
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("interpolation2"), "interpolation2", "expResult");
+                if (inParam1 != null && inValue != null && inTime != null && inResult != null) {
+                    double v1 = inValue.get(0);
+                    calc.testLinearInterpolation(inParam1, inTime.get(0), inTime.get(1), (int) v1, inResult);
                 } else {
-                    isNull(in_param1, in_value, in_time, in_result);
+                    isNull(inParam1, inValue, inTime, inResult);
                    
                 }
             }
             if (cl.hasOption("linearscaling")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "expResult");
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    calc.testLinearScaling(in_param1, in_value.get(0), in_value.get(1), in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("linearscaling"), "linearscaling", "expResult");
+                if (inParam1 != null && inValue != null && inResult != null) {
+                    calc.testLinearScaling(inParam1, inValue.get(0), inValue.get(1), inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                     
                 }
             }
             if (cl.hasOption("median")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("median"), "median", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("median"), "median", "expResult");
-                if (in_param1 != null && in_value != null) {
-                    calc.testMedian(in_param1, in_value.get(0));
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("median"), "median", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("median"), "median", "expResult");
+                if (inParam1 != null && inValue != null) {
+                    calc.testMedian(inParam1, inValue.get(0));
                 } else {
-                    isNull(in_param1, in_value);
+                    isNull(inParam1, inValue);
                     
                 }
             }
             if (cl.hasOption("mergevalues")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "2");
-                in_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "3");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "expResult");
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "2");
+                inTime = (List<DateTime>) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "3");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("mergevalues"), "mergevalues", "expResult");
 
-                if (in_param1 != null && in_value != null && in_time != null && in_result != null) {
-                    double v1 = in_value.get(0);
-                    double v2 = in_value.get(1);
-                    calc.testMergeValues(in_param1, in_time.get(0), (int) v1, (int) v2, in_result);
+                if (inParam1 != null && inValue != null && inTime != null && inResult != null) {
+                    double v1 = inValue.get(0);
+                    double v2 = inValue.get(1);
+                    calc.testMergeValues(inParam1, inTime.get(0), (int) v1, (int) v2, inResult);
                 } else {
-                    isNull(in_param1, in_value, in_time, in_result);
+                    isNull(inParam1, inValue, inTime, inResult);
                     
                 }
             }
             if (cl.hasOption("precisionfilter")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "expResult");
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("precisionfilter"), "precisionfilter", "expResult");
 
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    calc.testPrecisionFilter(in_param1, in_value.get(0), in_result);
+                if (inParam1 != null && inValue != null && inResult != null) {
+                    calc.testPrecisionFilter(inParam1, inValue.get(0), inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                     
                 }
             }
             if (cl.hasOption("sortbytime")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "expResult");
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    double v1 = in_value.get(0);
-                    calc.testSortByTime(in_param1, (int) v1, in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbytime"), "SortByTime", "expResult");
+                if (inParam1 != null && inValue != null && inResult != null) {
+                    double v1 = inValue.get(0);
+                    calc.testSortByTime(inParam1, (int) v1, inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                     
                 }
             }
             if (cl.hasOption("sortbyvalue")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "expResult");
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    double v1 = in_value.get(0);
-                    calc.testSortByValue(in_param1, (int) v1, in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("sortbyvalue"), "SortByValue", "expResult");
+                if (inParam1 != null && inValue != null && inResult != null) {
+                    double v1 = inValue.get(0);
+                    calc.testSortByValue(inParam1, (int) v1, inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                     
                 }
             }
             if (cl.hasOption("splitvalues")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "2");
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "2");
                 List<Boolean> backward=new ArrayList<Boolean>();
                 backward=(List<Boolean>)xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "3");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "expResult");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("splitvalues"), "SplitValues", "expResult");
                 
-                if (in_param1 != null && in_value != null && in_result != null && backward != null) {
-                    double v1 = in_value.get(0);
-                    double v2 = in_value.get(1);
-                    calc.testSplitValues(in_param1, (int) v1, (int) v2,backward.get(0), in_result);
+                if (inParam1 != null && inValue != null && inResult != null && backward != null) {
+                    double v1 = inValue.get(0);
+                    double v2 = inValue.get(1);
+                    calc.testSplitValues(inParam1, (int) v1, (int) v2,backward.get(0), inResult);
                 } else {
-                    isNull(in_param1, in_value, backward, in_result);
+                    isNull(inParam1, inValue, backward, inResult);
                     
                 }
             }
             if (cl.hasOption("subtraction1")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "expResult");
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    calc.testSubtraction(in_param1, in_value.get(0), in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction1"), "subtraction1", "expResult");
+                if (inParam1 != null && inValue != null && inResult != null) {
+                    calc.testSubtraction(inParam1, inValue.get(0), inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                     
                 }
             }
             if (cl.hasOption("subtraction2")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "1");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "expResult");
-                if (in_param1 != null && in_param2 != null && in_result != null) {
-                    calc.testSubtraction(in_param1, in_param2, in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "1");
+                inParam2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("subtraction2"), "subtraction2", "expResult");
+                if (inParam1 != null && inParam2 != null && inResult != null) {
+                    calc.testSubtraction(inParam1, inParam2, inResult);
                 } else {
-                    isNull(in_param1, in_param2, in_result);
+                    isNull(inParam1, inParam2, inResult);
                     
                 }
             }
             if (cl.hasOption("allmin")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("allmin"), "allmin", "1");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("allmin"), "allmin", "expResult");
-                if (in_param1 != null && in_result != null) {
-                    calc.testValueAllMinimum(in_param1, in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("allmin"), "allmin", "1");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("allmin"), "allmin", "expResult");
+                if (inParam1 != null && inResult != null) {
+                    calc.testValueAllMinimum(inParam1, inResult);
                 } else {
-                    isNull(in_param1,in_result);
+                    isNull(inParam1,inResult);
                     
                 }
             }
             if (cl.hasOption("min1")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min1"), "min1", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min1"), "min1", "expResult");
-                if (in_param1 != null && in_value != null) {
-                    calc.testValueMinimum(in_param1, in_value.get(0));
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min1"), "min1", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("min1"), "min1", "expResult");
+                if (inParam1 != null && inValue != null) {
+                    calc.testValueMinimum(inParam1, inValue.get(0));
                 } else {
-                    isNull(in_param1, in_value);
+                    isNull(inParam1, inValue);
                     
                 }
             }
             if (cl.hasOption("min2")) {
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "1");
                 List<Double> in_value3 = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "2");
-                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "expResult");
-                if (in_value != null) {
-                    calc.testValueMinimum(in_value.get(0), in_value3.get(0), in_resultv.get(0));
+                inResultV = (List<Double>) xml.paserXML(cl.getOptionValue("min2"), "min2", "expResult");
+                if (inValue != null) {
+                    calc.testValueMinimum(inValue.get(0), in_value3.get(0), inResultV.get(0));
                 } else {
-                    isNull(in_value,in_value3);
+                    isNull(inValue,in_value3);
                 }
             }
             if (cl.hasOption("min3")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min3"), "min3", "1");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min3"), "min3", "2");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min3"), "min3", "expResult");
-                if (in_param1 != null && in_param2 != null && in_value != null) {
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min3"), "min3", "1");
+                inParam2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min3"), "min3", "2");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("min3"), "min3", "expResult");
+                if (inParam1 != null && inParam2 != null && inValue != null) {
                     List<List<JEVisSample>> attributes=new ArrayList<List<JEVisSample>>();
-                    attributes.add(in_param1.getAllSamples());
-                    attributes.add(in_param2.getAllSamples());
-                    calc.testValueMinimum(attributes, in_value.get(0));
+                    attributes.add(inParam1.getAllSamples());
+                    attributes.add(inParam2.getAllSamples());
+                    calc.testValueMinimum(attributes, inValue.get(0));
                 } else {
-                    isNull(in_param1, in_param2, in_value);
+                    isNull(inParam1, inParam2, inValue);
                     
                 }
             }
             if (cl.hasOption("min4")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min4"), "min4", "1");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min4"), "min4", "2");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("min4"), "min4", "3");
-                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("min4"), "min4", "expResult");
-                if (in_param1 != null && in_param2 != null && in_value != null && in_resultv != null) {
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min4"), "min4", "1");
+                inParam2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("min4"), "min4", "2");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("min4"), "min4", "3");
+                inResultV = (List<Double>) xml.paserXML(cl.getOptionValue("min4"), "min4", "expResult");
+                if (inParam1 != null && inParam2 != null && inValue != null && inResultV != null) {
                     List<List<JEVisSample>> attributes=new ArrayList<List<JEVisSample>>();
-                    attributes.add(in_param1.getAllSamples());
-                    attributes.add(in_param2.getAllSamples());
-                    calc.testValueMinimum(attributes, in_value.get(0), in_resultv.get(0));
+                    attributes.add(inParam1.getAllSamples());
+                    attributes.add(inParam2.getAllSamples());
+                    calc.testValueMinimum(attributes, inValue.get(0), inResultV.get(0));
                 } else {
-                    isNull(in_param1, in_param2, in_value, in_resultv);
+                    isNull(inParam1, inParam2, inValue, inResultV);
                     
                 }
             }
             if (cl.hasOption("findgap")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "2");
-                in_time=(List<DateTime>)xml.paserXML(cl.getOptionValue("findgap"), "FindGap","3");
-                result_time = (List<DateTime>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "expResult");
-                if (in_param1 != null && in_time != null && in_value != null && result_time != null) {
-                    double v1 = in_value.get(0);
-                    double v2 = in_value.get(1);
-                    calc.testFindGap(in_param1,in_time.get(0) ,(int) v1, (int) v2, result_time);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "2");
+                inTime=(List<DateTime>)xml.paserXML(cl.getOptionValue("findgap"), "FindGap","3");
+                resultTime = (List<DateTime>) xml.paserXML(cl.getOptionValue("findgap"), "FindGap", "expResult");
+                if (inParam1 != null && inTime != null && inValue != null && resultTime != null) {
+                    double v1 = inValue.get(0);
+                    double v2 = inValue.get(1);
+                    calc.testFindGap(inParam1,inTime.get(0) ,(int) v1, (int) v2, resultTime);
                 } else {
-                    isNull(in_param1, in_value, in_time, result_time);
+                    isNull(inParam1, inValue, inTime, resultTime);
                     
                 }
             }
             if (cl.hasOption("dcConv")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("dcConv"), "dcConv", "1");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("dcConv"), "dcConv", "expResult");
-                if (in_param1 != null && in_result != null) {
-                    calc.testDifferentialCumulativeConverter(in_param1,in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("dcConv"), "dcConv", "1");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("dcConv"), "dcConv", "expResult");
+                if (inParam1 != null && inResult != null) {
+                    calc.testDifferentialCumulativeConverter(inParam1,inResult);
                 } else {
-                    isNull(in_param1, in_result);
+                    isNull(inParam1, inResult);
                     
                 }
             }
             if (cl.hasOption("max")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("max"), "MaxValue", "1");
-                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("max"), "MaxValue", "expResult");
-                if (in_param1 != null && in_resultv != null) {
-                    calc.testMaxValue(in_param1,in_resultv.get(0));
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("max"), "MaxValue", "1");
+                inResultV = (List<Double>) xml.paserXML(cl.getOptionValue("max"), "MaxValue", "expResult");
+                if (inParam1 != null && inResultV != null) {
+                    calc.testMaxValue(inParam1,inResultV.get(0));
                 } else {
-                    isNull(in_param1, in_resultv);
+                    isNull(inParam1, inResultV);
                     
                 }
             }
             if (cl.hasOption("average")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("average"), "AverageValue", "1");
-                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("average"), "AverageValue", "expResult");
-                if (in_param1 != null && in_resultv != null) {
-                    calc.testAverageValue(in_param1,in_resultv.get(0));
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("average"), "AverageValue", "1");
+                inResultV = (List<Double>) xml.paserXML(cl.getOptionValue("average"), "AverageValue", "expResult");
+                if (inParam1 != null && inResultV != null) {
+                    calc.testAverageValue(inParam1,inResultV.get(0));
                 } else {
-                    isNull(in_param1, in_resultv);
+                    isNull(inParam1, inResultV);
                     
                 }
             }
             if (cl.hasOption("shifttime")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "expResult");
-                if (in_param1!= null && in_value!=null && in_result != null) {
-                    double v1 = in_value.get(0);
-                    calc.testShiftTime(in_param1, (int) v1,in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("shifttime"), "ShiftTime", "expResult");
+                if (inParam1!= null && inValue!=null && inResult != null) {
+                    double v1 = inValue.get(0);
+                    calc.testShiftTime(inParam1, (int) v1,inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                     
                 }
             }
             if (cl.hasOption("meandeviation")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("meandeviation"), "MeanDeviation", "1");
-                in_resultv = (List<Double>) xml.paserXML(cl.getOptionValue("meandeviation"), "MeanDeviation", "expResult");
-                if (in_param1 != null && in_resultv != null) {
-                    calc.testMeanDeviation(in_param1,in_resultv.get(0));
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("meandeviation"), "MeanDeviation", "1");
+                inResultV = (List<Double>) xml.paserXML(cl.getOptionValue("meandeviation"), "MeanDeviation", "expResult");
+                if (inParam1 != null && inResultV != null) {
+                    calc.testMeanDeviation(inParam1,inResultV.get(0));
                 } else {
-                    isNull(in_param1, in_resultv);
+                    isNull(inParam1, inResultV);
                     
                 }
             }
             if (cl.hasOption("multiplication")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "1");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "expResult");
-                if (in_param1 != null && in_param2 != null && in_result != null) {
-                    calc.testMultiplication(in_param1, in_param2, in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "1");
+                inParam2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("multiplication"), "Multiplication", "expResult");
+                if (inParam1 != null && inParam2 != null && inResult != null) {
+                    calc.testMultiplication(inParam1, inParam2, inResult);
                 } else {
-                    isNull(in_param1, in_param2, in_result);
+                    isNull(inParam1, inParam2, inResult);
                     
                 }
             }
             if (cl.hasOption("division")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "1");
-                in_param2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "expResult");
-                if (in_param1 != null && in_param2 != null && in_result != null) {
-                    calc.testDivision(in_param1, in_param2, in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "1");
+                inParam2 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("division"), "Division", "expResult");
+                if (inParam1 != null && inParam2 != null && inResult != null) {
+                    calc.testDivision(inParam1, inParam2, inResult);
                 } else {
-                    isNull(in_param1, in_param2, in_result);
+                    isNull(inParam1, inParam2, inResult);
                     
                 }
             }
             if (cl.hasOption("lowpassF")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "expResult");
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    calc.testLowPassFilter(in_param1, in_value.get(0), in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("lowpassF"), "LowPassFilter", "expResult");
+                if (inParam1 != null && inValue != null && inResult != null) {
+                    calc.testLowPassFilter(inParam1, inValue.get(0), inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                     
                 }
             }
             if (cl.hasOption("derivation")) {
-                in_param1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "1");
-                in_value = (List<Double>) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "2");
-                in_result = (JEVisAttribute) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "expResult");
-                if (in_param1 != null && in_value != null && in_result != null) {
-                    double v1 = in_value.get(0);
-                    calc.testDerivation_JEVisAttribute_Int(in_param1, (int) v1, in_result);
+                inParam1 = (JEVisAttribute) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "1");
+                inValue = (List<Double>) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "2");
+                inResult = (JEVisAttribute) xml.paserXML(cl.getOptionValue("derivation"), "Derivation", "expResult");
+                if (inParam1 != null && inValue != null && inResult != null) {
+                    double v1 = inValue.get(0);
+                    calc.testDerivation_JEVisAttribute_Int(inParam1, (int) v1, inResult);
                 } else {
-                    isNull(in_param1, in_value, in_result);
+                    isNull(inParam1, inValue, inResult);
                     
                 }
             }

@@ -56,19 +56,19 @@ public class xmlLesenAcAtt {
         }
         if (attval.containsKey("function") && attval.containsKey("param") && attval.containsKey("type") && attval.get("function").equals(function) && attval.get("param").equals(param)) {
             if (attval.get("type").equals("jevis")) {
-                return typJEVis(node, "jevis");
+                return typeJEVis(node, "jevis");
             }
             if (attval.get("type").equals("id")) {
-                return typJEVis(node, "id");
+                return typeJEVis(node, "id");
             }
             if (attval.get("type").equals("value")) {
-                return typValue(node);
+                return typeValue(node);
             }
             if (attval.get("type").equals("time")) {
-                return typTime(node);
+                return typeTime(node);
             }
             if (attval.get("type").equals("trueorfalse")) {
-                return typTrueOrFalse(node);
+                return typeTrueOrFalse(node);
             }
         } else if (!node.elements().isEmpty()) {
             for (Object sub : node.elements()) {
@@ -81,7 +81,7 @@ public class xmlLesenAcAtt {
         return null;
     }
     
-    private JEVisAttribute typJEVis(Element node, String type) throws JEVisException {
+    private JEVisAttribute typeJEVis(Element node, String type) throws JEVisException {
         JEVisAttributeTest myAtt1 = null;
         JEVisAttribute myAtt2 = null;
         List<JEVisSample> list = new ArrayList<JEVisSample>();
@@ -124,7 +124,7 @@ public class xmlLesenAcAtt {
         return null;
     }
 
-    private List<Double> typValue(Element node) {
+    private List<Double> typeValue(Element node) {
         List<Double> list = new ArrayList<Double>();
 
         for (Object e : node.elements()) {
@@ -136,7 +136,7 @@ public class xmlLesenAcAtt {
         return list;
     }
 
-    private List<DateTime> typTime(Element node) {
+    private List<DateTime> typeTime(Element node) {
         List<DateTime> list = new ArrayList<DateTime>();
 
         for (Object e : node.elements()) {
@@ -149,7 +149,7 @@ public class xmlLesenAcAtt {
         return list;
     }
         
-    private List<Boolean> typTrueOrFalse(Element node) {
+    private List<Boolean> typeTrueOrFalse(Element node) {
         List<Boolean> list = new ArrayList<Boolean>();
 
         for (Object e : node.elements()) {
